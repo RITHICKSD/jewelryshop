@@ -1,0 +1,56 @@
+/* 
+   Jewelry Store - RTL (Right-to-Left) Styles
+*/
+
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] header {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] nav ul {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dropdown-menu {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%) translateY(10px);
+}
+
+[dir="rtl"] .dropdown:hover .dropdown-menu {
+    transform: translateX(50%) translateY(0);
+}
+
+[dir="rtl"] .header-utils {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-grid {
+    text-align: right;
+}
+
+/* Mirror icons if necessary */
+[dir="rtl"] .fa-chevron-right {
+    transform: rotate(180deg);
+}
+
+[dir="rtl"] .reveal-left {
+    transform: translateX(50px);
+}
+
+[dir="rtl"] .reveal-right {
+    transform: translateX(-50px);
+}
+
+/* Flex alignments */
+[dir="rtl"] .flex-align-end {
+    justify-content: flex-start;
+}
+
+/* Grid alignments */
+[dir="rtl"] .grid-cols-2 {
+    direction: rtl;
+}

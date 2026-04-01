@@ -1,0 +1,430 @@
+:root {
+    --auth-bg-overlay: rgba(26, 21, 16, 0.5);
+    /* Lightened for better image visibility */
+    /* Dark sophisticated overlay */
+    --card-bg: rgba(255, 255, 255, 0.98);
+    --input-border: #e0e0e0;
+    --input-focus: #c5a059;
+    --btn-gold: linear-gradient(135deg, #c5a059 0%, #ecd6aa 50%, #c5a059 100%);
+}
+
+/* Natural Scrolling for Auth Pages */
+html.auth-active,
+body.auth-active {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: #000;
+    /* Solid base */
+}
+
+/* ════════════════════════════════════════════════════
+   1. AUTH WRAPPER (Full Page)
+   ════════════════════════════════════════════════════ */
+.auth-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    padding: 80px 20px;
+    pointer-events: none;
+    /* Let scroll events pass to body */
+    z-index: 1;
+}
+
+.auth-card,
+.auth-header-utils {
+    pointer-events: auto;
+    /* Keep card and globe interactive */
+    position: relative;
+    z-index: 10;
+    /* Ensure it stays above background layers */
+}
+
+/* Background Image Layer - Fixed to viewport (Desktop/Tablet Only) */
+.auth-bg-image {
+    display: none;
+    /* Hidden by default (mobile) */
+}
+
+@media (min-width: 769px) {
+    .auth-bg-image {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: url('../assets/auth_bg.png') center/cover no-repeat;
+        z-index: 0;
+        /* Above black body but below everything else */
+        filter: none;
+        pointer-events: none;
+    }
+
+    /* Dark Overlay as a layer on top of the image */
+    .auth-bg-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--auth-bg-overlay);
+        z-index: 1;
+    }
+}
+
+/* Lang Toggle (Floating in corner) */
+.auth-header-utils {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    z-index: 20;
+    /* Ensure it's above everything */
+}
+
+/* Specific styling for the globe on the auth background to make it visible */
+.auth-header-utils .globe-icon {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Subtle white glow shadow */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.auth-header-utils .globe-icon i {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.auth-header-utils .globe-icon:hover {
+    background: #c5a059;
+    /* Transition to gold on hover */
+    border-color: #c5a059;
+    transform: rotate(30deg) scale(1.1);
+    box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
+}
+
+.auth-header-utils .globe-icon:hover i {
+    color: #ffffff !important;
+    text-shadow: none;
+}
+
+[dir="rtl"] .auth-header-utils {
+    right: auto;
+    left: 40px;
+}
+
+/* ════════════════════════════════════════════════════
+   2. AUTH CARD
+   ════════════════════════════════════════════════════ */
+.auth-card {
+    width: 100%;
+    max-width: 500px;
+    background: var(--card-bg);
+    padding: 50px 45px;
+    border-radius: 4px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: authReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes authReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo & Branding */
+.auth-brand {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.auth-brand .logo {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 2.2rem;
+    color: #1a1510;
+    margin-bottom: 12px;
+}
+
+.auth-brand p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: #888;
+    font-weight: 500;
+}
+
+/* ════════════════════════════════════════════════════
+   3. FORM ELEMENTS
+   ════════════════════════════════════════════════════ */
+.auth-form-group {
+    margin-bottom: 22px;
+}
+
+.auth-form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    color: #2a241e;
+}
+
+.auth-input-wrapper {
+    position: relative;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--input-border);
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.92rem;
+    color: #333;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: var(--input-focus);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+}
+
+/* Row (Remember me / Forgot) */
+.auth-form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 0.88rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #666;
+}
+
+.remember-me input {
+    accent-color: var(--input-focus);
+    width: 16px;
+    height: 16px;
+}
+
+.forgot-link {
+    color: var(--input-focus);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* ════════════════════════════════════════════════════
+   4. BUTTONS
+   ════════════════════════════════════════════════════ */
+.auth-btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--btn-gold);
+    border: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+}
+
+.auth-btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
+}
+
+/* Divider */
+.auth-divider {
+    text-align: center;
+    position: relative;
+    margin: 35px 0;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #eee;
+    z-index: 1;
+}
+
+.auth-divider span {
+    position: relative;
+    background: var(--card-bg);
+    padding: 0 15px;
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 2;
+}
+
+/* Social Buttons */
+.auth-social-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #eee;
+    background: #fff;
+    color: #444;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background: #fcfcfc;
+    border-color: #ddd;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.social-btn i {
+    font-size: 1.1rem;
+}
+
+.google-icon {
+    color: #ea4335;
+}
+
+.fb-icon {
+    color: #1877f2;
+}
+
+/* Footer Link */
+.auth-footer {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-footer a {
+    color: var(--input-focus);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ════════════════════════════════════════════════════
+   5. RTL OVERRIDES
+   ════════════════════════════════════════════════════ */
+[dir="rtl"] .auth-card {
+    text-align: right;
+}
+
+[dir="rtl"] .auth-input {
+    text-align: right;
+    direction: rtl;
+}
+
+[dir="rtl"] .remember-me {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .auth-brand p {
+    direction: rtl;
+}
+
+/* ════════════════════════════════════════════════════
+   6. RESPONSIVE
+   ════════════════════════════════════════════════════ */
+@media (max-width: 500px) {
+
+    html.auth-active,
+    body.auth-active {
+        height: 100%;
+        overflow: hidden;
+        /* Lock the outer scroller */
+        background: #ffffff;
+        /* Prevent black bars */
+    }
+
+    .auth-page {
+        height: 100%;
+        overflow-y: auto;
+        /* Scroll internally if needed */
+        padding: 0;
+        align-items: flex-start;
+        background: #ffffff;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth mobile scroll */
+    }
+
+    .auth-card {
+        padding: 50px 25px;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100%;
+        /* Fit the internal container */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .auth-header-utils {
+        top: 20px;
+        right: 20px;
+    }
+
+    /* Brown/Gold globe for mobile visibility */
+    .auth-header-utils .globe-icon {
+        background: rgba(197, 160, 89, 0.1);
+        border-color: rgba(197, 160, 89, 0.2);
+    }
+
+    .auth-header-utils .globe-icon i {
+        color: #c5a059 !important;
+        text-shadow: none;
+    }
+}

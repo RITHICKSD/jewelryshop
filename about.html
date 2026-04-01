@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | LUMINA</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/mobile-nav.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/about-enhanced.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <a href="home1.html" class="logo">LU<span>MINA</span></a>
+
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="home1.html">Home 1</a></li>
+                        <li><a href="home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Dashboard <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-dashboard.html">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="header-utils">
+            <div class="desktop-only">
+                <div class="globe-icon" title="Global">
+                    <i class="fas fa-globe"></i>
+                </div>
+            </div>
+            <a href="login.html" class="login-btn desktop-only">Login</a>
+            <div class="mobile-globe">
+                <div class="globe-icon" title="Toggle RTL/LTR">
+                    <i class="fas fa-globe"></i>
+                </div>
+            </div>
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero services-hero" data-aos="fade-up">
+        <div class="hero-background">
+            <div class="floating-gems">
+                <div class="gem gem-1">💎</div>
+                <div class="gem gem-2">💍</div>
+                <div class="gem gem-3">👑</div>
+                <div class="gem gem-4">⭐</div>
+            </div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right" data-aos-delay="200">
+                    <div class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
+                        <span class="subtitle-line"></span>
+                        <span class="subtitle-text">Welcome to LUMINA</span>
+                        <span class="subtitle-line"></span>
+                    </div>
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="400">
+                        <span class="title-word">Our</span>
+                        <span class="title-word highlight">Story</span>
+                        <span class="title-word">of</span>
+                        <span class="title-word elegant">Elegance</span>
+                    </h1>
+                    <p class="hero-description" data-aos="fade-up" data-aos-delay="500">
+                        For over three decades, LUMINA has been the <span class="highlight-text">epitome of luxury
+                            jewelry</span>, crafting timeless pieces that celebrate life's most precious moments.
+                    </p>
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="600">
+                        <a href="#heritage" class="btn btn-primary">Discover Our Story</a>
+                        <a href="#gallery" class="btn btn-outline">View Gallery</a>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
+                    <div class="image-wrapper">
+                        <img src="assets/ab.jpg" alt="Luxury Jewelry">
+                        <div class="image-overlay"></div>
+                        <div class="floating-elements">
+                            <div class="floating-gem gem-1" data-aos="zoom-in" data-aos-delay="600"></div>
+                            <div class="floating-gem gem-2" data-aos="zoom-in" data-aos-delay="700"></div>
+                            <div class="floating-gem gem-3" data-aos="zoom-in" data-aos-delay="800"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background-effects">
+            <div class="gradient-overlay"></div>
+            <div class="particle-effect"></div>
+        </div>
+    </section>
+
+    <!-- Heritage Section -->
+    <section class="heritage-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Heritage</h2>
+                <p>A legacy of craftsmanship passed down through generations</p>
+            </div>
+            <div class="heritage-content">
+                <div class="heritage-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1994</div>
+                        <div class="timeline-content">
+                            <h3>The Beginning</h3>
+                            <p>LUMINA was founded with a vision to create exceptional jewelry that combines traditional
+                                craftsmanship with contemporary design.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2005</div>
+                        <div class="timeline-content">
+                            <h3>Global Expansion</h3>
+                            <p>Opened our first international boutique in Paris, establishing our presence in the
+                                world's fashion capital.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-content">
+                            <h3>Innovation Award</h3>
+                            <p>Recognized for our innovative sustainable practices and ethical sourcing in the jewelry
+                                industry.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-content">
+                            <h3>Digital Revolution</h3>
+                            <p>Launched our digital platform, bringing luxury jewelry to discerning clients worldwide.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We pursue perfection in every piece we create, ensuring exceptional quality and craftsmanship.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Passion</h3>
+                    <p>Our love for jewelry drives us to create pieces that inspire and delight our clients.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We operate with transparency and honesty, building trust through ethical practices.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We're committed to responsible sourcing and environmentally conscious practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Masters</h2>
+                <p>The talented artisans behind our exquisite creations</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80"
+                            alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Alexandra Chen</h3>
+                        <p class="member-title">Master Designer</p>
+                        <p class="member-bio">With 25 years of experience, Alexandra brings innovative designs that
+                            blend tradition with modern aesthetics.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80"
+                            alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Marcus Riviera</h3>
+                        <p class="member-title">Head Gemologist</p>
+                        <p class="member-bio">Marcus ensures every gemstone meets our exacting standards for quality,
+                            clarity, and ethical sourcing.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="assets/f1.avif" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sophia Laurent</h3>
+                        <p class="member-title">Creative Director</p>
+                        <p class="member-bio">Sophia's artistic vision shapes our collections, creating pieces that tell
+                            stories and capture emotions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Craftsmanship Section -->
+    <section class="craftsmanship-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Artisanal Excellence</h2>
+                <p>Every LUMINA piece is a testament to our commitment to exceptional craftsmanship</p>
+            </div>
+            <div class="craftsmanship-cards">
+                <div class="craft-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="craft-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3>Handcrafted</h3>
+                    <p>Each piece is meticulously crafted by hand using traditional techniques passed down through
+                        generations</p>
+                </div>
+                <div class="craft-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="craft-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Quality Control</h3>
+                    <p>Rigorous inspection at every stage ensures perfection in every detail and flawless execution</p>
+                </div>
+                <div class="craft-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="craft-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certified</h3>
+                    <p>All pieces come with authenticity certificates and lifetime guarantees of quality</p>
+                </div>
+            </div>
+            <div class="craftsmanship-image" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&q=80" alt="Craftsmanship">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Stories from those who trust LUMINA with their most precious moments</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"LUMINA created the perfect engagement ring that captured everything I wanted to express.
+                            Their attention to detail and personal service exceeded all expectations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&q=80" alt="Client">
+                        <div class="author-info">
+                            <h4>Isabella Martinez</h4>
+                            <span>CEO, Martinez Group</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The custom necklace LUMINA designed for our anniversary is absolutely stunning. It's not
+                            just jewelry; it's a work of art that tells our story."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&q=80" alt="Client">
+                        <div class="author-info">
+                            <h4>James Thompson</h4>
+                            <span>Architect</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"For three generations, my family has trusted LUMINA for our most important occasions. Their
+                            quality and service are simply unmatched."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=50&q=80" alt="Client">
+                        <div class="author-info">
+                            <h4>Elizabeth Chen</h4>
+                            <span>Art Collector</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Begin Your LUMINA Journey</h2>
+                <p>Discover the perfect piece that speaks to your unique style and celebrates your special moments.</p>
+                <div class="cta-buttons">
+                    <a href="services.html" class="btn btn-primary">Explore Collections</a>
+                    <a href="contact.html" class="btn btn-outline">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Experience Section -->
+    <section class="luxury-experience">
+        <div class="container">
+            <div class="experience-header">
+                <h2>The LUMINA Experience</h2>
+                <p>Where every detail is crafted to perfection</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="experience-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Premium Materials</h3>
+                    <p>Only the finest materials from ethical sources, ensuring each piece meets our exacting standards.
+                    </p>
+                    <div class="experience-features">
+                        <span><i class="fas fa-check"></i> Conflict-Free Diamonds</span>
+                        <span><i class="fas fa-check"></i> Recycled Gold</span>
+                        <span><i class="fas fa-check"></i> Ethical Sourcing</span>
+                    </div>
+                </div>
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="experience-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Custom Design</h3>
+                    <p>Our master designers work with you to create unique pieces that reflect your personal story.</p>
+                    <div class="experience-features">
+                        <span><i class="fas fa-check"></i> Personal Consultation</span>
+                        <span><i class="fas fa-check"></i> 3D Modeling</span>
+                        <span><i class="fas fa-check"></i> Lifetime Support</span>
+                    </div>
+                </div>
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="experience-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Lifetime Warranty</h3>
+                    <p>Every LUMINA piece comes with our comprehensive lifetime warranty and service guarantee.</p>
+                    <div class="experience-features">
+                        <span><i class="fas fa-check"></i> Free Cleaning</span>
+                        <span><i class="fas fa-check"></i> Annual Inspection</span>
+                        <span><i class="fas fa-check"></i> Repair Service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards-section">
+        <div class="container">
+            <div class="awards-header">
+                <h2>Recognition & Awards</h2>
+                <p>Celebrating excellence in jewelry craftsmanship</p>
+            </div>
+            <div class="awards-showcase">
+                <div class="award-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="award-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>International Design Award</h3>
+                        <p class="award-year">2023</p>
+                        <p>Best Luxury Jewelry Collection</p>
+                    </div>
+                </div>
+                <div class="award-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Sustainability Excellence</h3>
+                        <p class="award-year">2022</p>
+                        <p>Leader in Ethical Jewelry Practices</p>
+                    </div>
+                </div>
+                <div class="award-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="award-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Customer Choice Award</h3>
+                        <p class="award-year">2021</p>
+                        <p>Highest Customer Satisfaction Rating</p>
+                    </div>
+                </div>
+                <div class="award-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="award-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Master Craftsmanship</h3>
+                        <p class="award-year">2020</p>
+                        <p>Excellence in Traditional Techniques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="process-header">
+                <h2>Our Creation Process</h2>
+                <p>From concept to reality, every step is meticulously executed</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Consultation</h3>
+                        <p>We begin with understanding your vision, preferences, and the story you want to tell through
+                            your jewelry.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-left" data-aos-delay="200">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Design</h3>
+                        <p>Our designers create detailed sketches and 3D models, bringing your vision to life with
+                            precision and artistry.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Crafting</h3>
+                        <p>Master artisans handcraft each piece using traditional techniques combined with modern
+                            technology.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-left" data-aos-delay="400">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Quality Assurance</h3>
+                        <p>Each piece undergoes rigorous quality checks to ensure it meets our exacting standards of
+                            excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-header">
+                <h2>Masterpiece Gallery</h2>
+                <p>Explore our finest creations and recent commissions</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="assets/j4.avif" alt="Diamond Ring">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Royal Diamond Ring</h3>
+                                <p>Custom engagement piece</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="assets/j5.jpg" alt="Gold Necklace">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Solitaire Necklace</h3>
+                                <p>18k gold with diamond pendant</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-image">
+                        <img src="assets/h3.jpg" alt="Elegant Earrings">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Pearl Drop Earrings</h3>
+                                <p>South Sea pearls with diamonds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="gallery-image">
+                        <img src="assets/h4.jpg" alt="Luxury Watch">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Luxury Timepiece</h3>
+                                <p>Custom diamond bezel design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="gallery-image">
+                        <img src="assets/j6.jpg" alt="Bracelet">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Tennis Bracelet</h3>
+                                <p>Full diamond eternity band</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="gallery-image">
+                        <img src="assets/j7.jpg" alt="Brooch">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Vintage Brooch</h3>
+                                <p>Art Deco inspired design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <div class="newsletter-text">
+                    <h2>Stay Connected with LUMINA</h2>
+                    <p>Subscribe to receive exclusive offers, new collection previews, and invitations to private
+                        events.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form class="newsletter-form-wrapper">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                    <p class="newsletter-privacy">By subscribing, you agree to our Privacy Policy and Terms of Service.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #0f0d0c; padding: 120px 10% 60px; color: white;">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="home1.html" class="logo">LU<span>MINA</span></a>
+                <p>Since 1988, Lumina has been crafting the world's most exquisite jewelry. Our legacy is built on
+                    the pillars of exceptional craftsmanship, ethical sourcing, and timeless design.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Collections</h4>
+                <ul>
+                    <li><a href="#">Engagement Rings</a></li>
+                    <li><a href="#">Diamond Necklaces</a></li>
+                    <li><a href="#">Gold Bracelets</a></li>
+                    <li><a href="#">Wedding Bands</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Boutique</h4>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Store Locator</a></li>
+                    <li><a href="#">Book Appointment</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 LUMINA LUXURY JEWELRY. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+
+</html>

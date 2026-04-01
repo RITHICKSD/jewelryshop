@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="auth-active">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | LUMINA Premium Jewelry</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="auth-active">
+
+    <div class="auth-page">
+        <!-- Background Layer -->
+        <div class="auth-bg-image"></div>
+
+        <!-- Language Toggle -->
+        <div class="auth-header-utils">
+            <div class="globe-icon" title="Toggle RTL/LTR">
+                <i class="fas fa-globe"></i>
+            </div>
+        </div>
+
+        <div class="auth-card">
+            <!-- Branding -->
+            <div class="auth-brand">
+                <a href="home1.html" class="logo">LU<span>MINA</span></a>
+                <p>Welcome back! Please login to your account</p>
+            </div>
+
+            <form action="user-dashboard.html" class="auth-form">
+                <!-- Email Address -->
+                <div class="auth-form-group">
+                    <label for="email">Email Address</label>
+                    <div class="auth-input-wrapper">
+                        <input type="email" id="email" class="auth-input" placeholder="john@example.com" required>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="auth-form-group">
+                    <label for="password">Password</label>
+                    <div class="auth-input-wrapper">
+                        <input type="password" id="password" class="auth-input" placeholder="Enter your password"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Remember me / Forgot password -->
+                <div class="auth-form-row">
+                    <label class="remember-me">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="auth-btn-submit">LOGIN</button>
+
+                <!-- Divider -->
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- Social Logins -->
+                <div class="auth-social-btns">
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-google google-icon"></i>
+                        Continue with Google
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-facebook-f fb-icon"></i>
+                        Continue with Facebook
+                    </a>
+                </div>
+
+                <!-- Register Link -->
+                <div class="auth-footer">
+                    Don't have an account? <a href="register.html">Register here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

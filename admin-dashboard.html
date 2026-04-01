@@ -1,0 +1,1705 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina | Admin Center</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+    <style>
+        /* ===== ADMIN SIDEBAR MOBILE: FORCE VISIBILITY ===== */
+        @media (max-width: 768px) {
+
+            /* Sidebar container — hidden off-screen by default */
+            body.admin-body #adminSidebar {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 280px !important;
+                max-width: 85vw !important;
+                height: 100vh !important;
+                z-index: 20000 !important;
+                background: #1a1510 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                transform: translateX(-110%) !important;
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                visibility: hidden !important;
+                padding: 0 !important;
+                border: none !important;
+            }
+
+            /* Sidebar open state */
+            body.admin-body #adminSidebar.active {
+                transform: translateX(0) !important;
+                visibility: visible !important;
+            }
+
+            /* RTL sidebar: slides in from the right */
+            [dir="rtl"] body.admin-body #adminSidebar {
+                left: auto !important;
+                right: 0 !important;
+                transform: translateX(110%) !important;
+            }
+
+            [dir="rtl"] body.admin-body #adminSidebar.active {
+                transform: translateX(0) !important;
+            }
+
+            /* RTL logo positioning */
+            [dir="rtl"] body.admin-body #adminSidebar .logo {
+                flex-direction: row-reverse !important;
+                justify-content: flex-end !important;
+                text-align: right !important;
+            }
+
+            /* Funnel Chart Mobile Fixes */
+            .funnel-container {
+                width: 100% !important;
+                min-width: 280px !important;
+                overflow-x: auto !important;
+                padding: 0 5px !important;
+            }
+
+            .funnel-stage {
+                min-width: 70px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 0 8px !important;
+                text-align: center !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                font-size: 0.75rem !important;
+            }
+
+            /* Ensure Final Delivery bar is always visible */
+            .funnel-stage:last-child {
+                min-width: 80px !important;
+                background: var(--admin-accent) !important;
+                color: white !important;
+            }
+
+            body.admin-body #adminSidebar .sidebar-header {
+                flex-shrink: 0 !important;
+                padding: 25px 25px 15px !important;
+                margin-bottom: 0 !important;
+                display: block !important;
+            }
+
+            /* Hide hamburger when sidebar is open */
+            body.admin-body #adminSidebar.active~#adminHam {
+                display: none !important;
+                pointer-events: none !important;
+            }
+
+            /* Dim overlay behind sidebar */
+            body.admin-body .sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.55);
+                z-index: 19999;
+            }
+
+            body.admin-body .sidebar-overlay.active {
+                display: block !important;
+            }
+
+            /* ── Nav children: display only, NO visibility override ──
+               Visibility is controlled solely by the parent #adminSidebar.
+               Children must NOT set visibility:visible or they'll show
+               even when the sidebar is hidden (especially in RTL mode). */
+
+            body.admin-body #adminSidebar nav,
+            body.admin-body #adminSidebar nav.sidebar-nav {
+                display: flex !important;
+                flex-direction: column !important;
+                flex: 1 !important;
+                width: 100% !important;
+                padding: 5px 0 60px !important;
+                /* Reset mobile-nav overlay from style.css */
+                position: static !important;
+                top: auto !important;
+                right: auto !important;
+                left: auto !important;
+                height: auto !important;
+                max-width: none !important;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                overflow-y: visible !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                /* NO visibility: visible here — inherit from parent */
+            }
+
+            body.admin-body #adminSidebar .sidebar-nav {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                padding: 5px 0 60px !important;
+                overflow-y: visible !important;
+            }
+
+            body.admin-body #adminSidebar .nav-group {
+                display: block !important;
+                opacity: 1 !important;
+                transform: none !important;
+                width: 100% !important;
+                padding: 0 12px !important;
+                margin-bottom: 20px !important;
+                /* NO visibility: visible — inherit from parent */
+            }
+
+            body.admin-body #adminSidebar .nav-label {
+                display: block !important;
+                opacity: 1 !important;
+                color: #8a7a6e !important;
+                font-size: 0.68rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 2.5px !important;
+                text-transform: uppercase !important;
+                padding: 0 10px !important;
+                margin-bottom: 10px !important;
+            }
+
+            body.admin-body #adminSidebar .sidebar-nav ul {
+                list-style: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+            }
+
+            body.admin-body #adminSidebar .nav-item {
+                display: block !important;
+                opacity: 1 !important;
+                margin-bottom: 4px !important;
+            }
+
+            body.admin-body #adminSidebar .nav-item a {
+                display: flex !important;
+                align-items: center !important;
+                gap: 14px !important;
+                padding: 11px 16px !important;
+                color: #d4c9bf !important;
+                text-decoration: none !important;
+                border-radius: 10px !important;
+                font-size: 0.9rem !important;
+                font-weight: 500 !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            body.admin-body #adminSidebar .nav-item a i {
+                color: #c5a059 !important;
+                font-size: 1rem !important;
+                width: 20px !important;
+                min-width: 20px !important;
+                text-align: center !important;
+            }
+
+            body.admin-body #adminSidebar .nav-item a span {
+                color: #d4c9bf !important;
+                opacity: 1 !important;
+                white-space: nowrap !important;
+            }
+
+            body.admin-body #adminSidebar .nav-item.active a {
+                background: rgba(197, 160, 89, 0.15) !important;
+                color: #c5a059 !important;
+            }
+
+            body.admin-body #adminSidebar .nav-item.active a span {
+                color: #c5a059 !important;
+            }
+
+            body.admin-body #adminSidebar .nav-item a:hover {
+                background: rgba(255, 255, 255, 0.07) !important;
+                color: #ffffff !important;
+            }
+
+            /* Settings Page Styles */
+            .settings-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 25px;
+                margin-top: 20px;
+            }
+
+            .settings-card {
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+                padding: 25px;
+                border: 1px solid var(--admin-border);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .settings-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            }
+
+            .settings-header {
+                margin-bottom: 25px;
+                padding-bottom: 15px;
+                border-bottom: 2px solid var(--admin-border);
+            }
+
+            .settings-header h3 {
+                font-size: 1.2rem;
+                font-family: 'Cormorant Garamond', serif;
+                color: var(--admin-primary-text);
+                margin: 0 0 8px 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .settings-header h3 i {
+                color: var(--admin-accent);
+                font-size: 1rem;
+            }
+
+            .settings-header p {
+                margin: 8px 0 0 0;
+                font-size: 0.85rem;
+                color: var(--admin-muted-text);
+                line-height: 1.5;
+            }
+
+            .settings-form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: var(--admin-primary-text);
+                margin-bottom: 5px;
+                display: block;
+            }
+
+            .form-input {
+                padding: 12px 16px;
+                border: 2px solid var(--admin-border);
+                border-radius: 8px;
+                font-size: 0.9rem;
+                font-family: 'Montserrat', sans-serif;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                background: white;
+                color: var(--admin-primary-text);
+            }
+
+            .form-input:focus {
+                outline: none;
+                border-color: var(--admin-accent);
+                box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+            }
+
+            .form-select {
+                padding: 12px 16px;
+                border: 2px solid var(--admin-border);
+                border-radius: 8px;
+                font-size: 0.9rem;
+                font-family: 'Montserrat', sans-serif;
+                background: white;
+                color: var(--admin-primary-text);
+                cursor: pointer;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .form-select:focus {
+                outline: none;
+                border-color: var(--admin-accent);
+                box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+            }
+
+            /* Toggle Switch Styles */
+            .toggle-group {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .toggle-label {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: var(--admin-primary-text);
+                cursor: pointer;
+                user-select: none;
+            }
+
+            .toggle-label input[type="checkbox"] {
+                display: none;
+            }
+
+            .toggle-slider {
+                position: relative;
+                width: 50px;
+                height: 26px;
+                background: #ddd;
+                border-radius: 34px;
+                transition: background 0.3s ease;
+                flex-shrink: 0;
+            }
+
+            .toggle-slider::before {
+                position: absolute;
+                content: "";
+                height: 20px;
+                width: 20px;
+                left: 3px;
+                bottom: 3px;
+                background: white;
+                border-radius: 50%;
+                transition: transform 0.3s ease;
+            }
+
+            .toggle-label input[type="checkbox"]:checked+.toggle-slider {
+                background: var(--admin-accent);
+            }
+
+            .toggle-label input[type="checkbox"]:checked+.toggle-slider::before {
+                transform: translateX(24px);
+            }
+
+            /* RTL Support for Settings */
+            [dir="rtl"] .settings-header h3 {
+                flex-direction: row-reverse;
+            }
+
+            [dir="rtl"] .toggle-label {
+                flex-direction: row-reverse;
+            }
+
+            [dir="rtl"] .form-input,
+            [dir="rtl"] .form-select {
+                text-align: right;
+            }
+
+            /* Mobile Settings Styles */
+            @media (max-width: 768px) {
+                .settings-grid {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    padding: 0 10px;
+                }
+
+                .settings-card {
+                    padding: 20px;
+                    border-radius: 12px;
+                }
+
+                .settings-header {
+                    margin-bottom: 20px;
+                    padding-bottom: 12px;
+                }
+
+                .settings-header h3 {
+                    font-size: 1.1rem;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 8px;
+                }
+
+                .settings-header h3 i {
+                    font-size: 0.9rem;
+                }
+
+                .settings-form {
+                    gap: 15px;
+                }
+
+                .form-group {
+                    gap: 6px;
+                }
+
+                .form-group label {
+                    font-size: 0.85rem;
+                    margin-bottom: 4px;
+                }
+
+                .form-input,
+                .form-select {
+                    padding: 10px 14px;
+                    font-size: 0.85rem;
+                }
+
+                .toggle-label {
+                    font-size: 0.85rem;
+                    gap: 10px;
+                }
+
+                .toggle-slider {
+                    width: 45px;
+                    height: 24px;
+                }
+
+                .toggle-slider::before {
+                    height: 18px;
+                    width: 18px;
+                    left: 3px;
+                    bottom: 3px;
+                }
+
+                .toggle-label input[type="checkbox"]:checked+.toggle-slider::before {
+                    transform: translateX(21px);
+                }
+            }
+
+            /* Small Mobile Settings */
+            @media (max-width: 480px) {
+                .settings-grid {
+                    padding: 0 5px;
+                    gap: 15px;
+                }
+
+                .settings-card {
+                    padding: 15px;
+                }
+
+                .settings-header h3 {
+                    font-size: 1rem;
+                }
+
+                .form-input,
+                .form-select {
+                    padding: 8px 12px;
+                    font-size: 0.8rem;
+                }
+
+                .toggle-label {
+                    font-size: 0.8rem;
+                    flex-wrap: wrap;
+                }
+
+                .toggle-slider {
+                    width: 40px;
+                    height: 20px;
+                }
+
+                .toggle-slider::before {
+                    height: 16px;
+                    width: 16px;
+                    left: 2px;
+                    bottom: 2px;
+                }
+
+                .toggle-label input[type="checkbox"]:checked+.toggle-slider::before {
+                    transform: translateX(20px);
+                }
+            }
+
+        }
+    </style>
+</head>
+
+<body class="admin-body">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <a href="home1.html" class="logo">LU<span>MINA</span></a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-group">
+                <span class="nav-label">Management</span>
+                <ul>
+                    <li class="nav-item active" data-tab="dashboard">
+                        <a href="#"><i class="fas fa-th-large"></i> <span>Overview</span></a>
+                    </li>
+                    <li class="nav-item" data-tab="collection">
+                        <a href="#"><i class="fas fa-ring"></i> <span>Collection</span></a>
+                    </li>
+                    <li class="nav-item" data-tab="orders">
+                        <a href="#"><i class="fas fa-shopping-bag"></i> <span>Order History</span></a>
+                    </li>
+                    <li class="nav-item" data-tab="clients">
+                        <a href="#"><i class="fas fa-user-friends"></i> <span>Clientele</span></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-label">Services</span>
+                <ul>
+                    <li class="nav-item" data-tab="bespoke">
+                        <a href="#"><i class="fas fa-gem"></i> <span>Bespoke Log</span></a>
+                    </li>
+                    <li class="nav-item" data-tab="stylist">
+                        <a href="#"><i class="fas fa-comments"></i> <span>Concierge Chat</span></a>
+                    </li>
+                    <li class="nav-item" data-tab="analytics">
+                        <a href="#"><i class="fas fa-chart-line"></i> <span>Market Reports</span></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-label">Admin Control</span>
+                <ul>
+                    <li class="nav-item">
+                        <a href="home1.html"><i class="fas fa-sign-out-alt"></i> <span>Exit Dashboard</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="adminLangToggle" title="Toggle RTL/LTR"><i class="fas fa-globe"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Tabs Content -->
+
+        <!-- Overview Content -->
+        <div class="tab-content active" id="dashboard">
+            <div class="admin-stats-row">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <span class="trend up">+18% <i class="fas fa-caret-up"></i></span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Total Revenue</span>
+                        <h2 class="stat-value">$142,850</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <span class="trend up">+5% <i class="fas fa-caret-up"></i></span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Total Sales</span>
+                        <h2 class="stat-value">24</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon"><i class="fas fa-gem"></i></div>
+                        <span class="trend down">-2% <i class="fas fa-caret-down"></i></span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Inventory Items</span>
+                        <h2 class="stat-value">312</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
+                        <span class="trend up">+12 <i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Bespoke Inquiries</span>
+                        <h2 class="stat-value">48</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <div class="chart-card">
+                    <div class="card-title-row">
+                        <h2>Bi-Weekly Revenue</h2>
+                        <div class="time-filter" style="font-size: 0.8rem; font-weight: 600; color: #999;">
+                            MAR 01 - MAR 15 <i class="fas fa-calendar-alt" style="margin-left: 5px;"></i>
+                        </div>
+                    </div>
+                    <div class="revenue-bars">
+                        <div class="bar-wrapper">
+                            <div class="bar-pill" style="height: 45%;" data-value="$12k"></div>
+                            <span class="bar-label">Mon</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar-pill" style="height: 60%;" data-value="$15k"></div>
+                            <span class="bar-label">Tue</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar-pill" style="height: 85%;" data-value="$22k"></div>
+                            <span class="bar-label">Wed</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar-pill" style="height: 55%;" data-value="$14k"></div>
+                            <span class="bar-label">Thu</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar-pill" style="height: 95%;" data-value="$28k"></div>
+                            <span class="bar-label">Fri</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar-pill" style="height: 40%;" data-value="$10k"></div>
+                            <span class="bar-label">Sat</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar-pill" style="height: 30%;" data-value="$8k"></div>
+                            <span class="bar-label">Sun</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <div class="card-title-row">
+                        <h2>Client Activity</h2>
+                    </div>
+                    <ul class="activity-list" style="list-style: none; padding: 0;">
+                        <li style="display: flex; gap: 15px; margin-bottom: 25px;">
+                            <img src="https://ui-avatars.com/api/?name=E+B&background=e3f2fd&color=1565c0"
+                                style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div>
+                                <p style="font-size: 0.85rem; margin: 0;"><strong>Lady Eleanor</strong> marked items as
+                                    hidden.</p>
+                                <small style="color: #999;">2 mins ago</small>
+                            </div>
+                        </li>
+                        <li style="display: flex; gap: 15px; margin-bottom: 25px;">
+                            <img src="https://ui-avatars.com/api/?name=J+D&background=f3e5f5&color=7b1fa2"
+                                style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div>
+                                <p style="font-size: 0.85rem; margin: 0;"><strong>John Doe</strong> requested a Bespoke
+                                    Appointment.</p>
+                                <small style="color: #999;">45 mins ago</small>
+                            </div>
+                        </li>
+                        <li style="display: flex; gap: 15px;">
+                            <img src="https://ui-avatars.com/api/?name=S+K&background=e8f5e9&color=2e7d32"
+                                style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div>
+                                <p style="font-size: 0.85rem; margin: 0;"><strong>Sophie King</strong> purchased the
+                                    Soleil D'Or Ring.</p>
+                                <small style="color: #999;">2 hours ago</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="data-table-card">
+                <div class="card-title-row">
+                    <h2>Recent High-Value Orders</h2>
+                    <button
+                        style="background: transparent; border: 1px solid var(--admin-accent); color: var(--admin-accent); padding: 8px 15px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer;">
+                        VIEW ALL ORDERS
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Client</th>
+                                <th>Item Name</th>
+                                <th>Value</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Order ID">#LX-8890</td>
+                                <td data-label="Client" class="customer-cell">
+                                    <img src="https://ui-avatars.com/api/?name=E+B&background=eee" class="customer-img">
+                                    <span>Lady Eleanor</span>
+                                </td>
+                                <td data-label="Item Name">Emerald Gala Set</td>
+                                <td data-label="Value"><strong>$24,000.00</strong></td>
+                                <td data-label="Status"><span class="status-badge processing">Processing</span></td>
+                                <td data-label="Actions"><i class="fas fa-ellipsis-h"
+                                        style="cursor: pointer; color: #999;"></i></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Order ID">#LX-8889</td>
+                                <td data-label="Client" class="customer-cell">
+                                    <img src="https://ui-avatars.com/api/?name=J+W&background=eee" class="customer-img">
+                                    <span>James White</span>
+                                </td>
+                                <td data-label="Item Name">Solo Platinum Band</td>
+                                <td data-label="Value"><strong>$4,500.00</strong></td>
+                                <td data-label="Status"><span class="status-badge shipped">Shipped</span></td>
+                                <td data-label="Actions"><i class="fas fa-ellipsis-h"
+                                        style="cursor: pointer; color: #999;"></i></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Order ID">#LX-8888</td>
+                                <td data-label="Client" class="customer-cell">
+                                    <img src="https://ui-avatars.com/api/?name=M+R&background=eee" class="customer-img">
+                                    <span>Mira Rossi</span>
+                                </td>
+                                <td data-label="Item Name">Stellar Sapphire</td>
+                                <td data-label="Value"><strong>$18,800.00</strong></td>
+                                <td data-label="Status"><span class="status-badge delivered">Delivered</span></td>
+                                <td data-label="Actions"><i class="fas fa-ellipsis-h"
+                                        style="cursor: pointer; color: #999;"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collection Content -->
+        <div class="tab-content" id="collection">
+            <div class="admin-stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-boxes"></i></div>
+                    <div class="stat-details">
+                        <span class="stat-label">Total SKUs</span>
+                        <h2 class="stat-value">124</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="color: #ef6c00;"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="stat-details">
+                        <span class="stat-label">Low Stock</span>
+                        <h2 class="stat-value">12</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-table-card">
+                <div class="card-title-row">
+                    <h2>Inventory Ledger</h2>
+                    <button class="btn-gold" style="padding: 10px 20px; font-size: 0.8rem;">+ NEW PIECE</button>
+                </div>
+                <div class="inventory-grid">
+                    <div class="inventory-card">
+                        <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=400" alt="Ring">
+                        <p style="font-weight: 600; font-size: 0.85rem; margin: 10px 0 5px;">Soleil D'Or Ring</p>
+                        <span class="stock-status status-in">In Stock (42)</span>
+                    </div>
+                    <div class="inventory-card">
+                        <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=400" alt="Necklace">
+                        <p style="font-weight: 600; font-size: 0.85rem; margin: 10px 0 5px;">Noir Luxe Choker</p>
+                        <span class="stock-status status-low">Low Stock (3)</span>
+                    </div>
+                    <div class="inventory-card">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400" alt="Earrings">
+                        <p style="font-weight: 600; font-size: 0.85rem; margin: 10px 0 5px;">Celestial Drops</p>
+                        <span class="stock-status status-in">In Stock (18)</span>
+                    </div>
+                    <div class="inventory-card">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400" alt="Band">
+                        <p style="font-weight: 600; font-size: 0.85rem; margin: 10px 0 5px;">Platinum Horizon</p>
+                        <span class="stock-status status-in">In Stock (12)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order History Content -->
+        <div class="tab-content" id="orders">
+            <div class="admin-stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="stat-details">
+                        <span class="stat-label">Monthly Orders</span>
+                        <h2 class="stat-value">156</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="color: #2e7d32;"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-details">
+                        <span class="stat-label">Fulfilled</span>
+                        <h2 class="stat-value">94%</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="data-table-card">
+                <div class="card-title-row">
+                    <h2>Full Sales Transaction Log</h2>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Ref</th>
+                            <th>Date</th>
+                            <th>Value</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#ORD-9921</td>
+                            <td>Oct 12, 2025</td>
+                            <td>$12,400.00</td>
+                            <td>Wire Transfer</td>
+                            <td><span class="status-badge delivered">Paid</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-9920</td>
+                            <td>Oct 11, 2025</td>
+                            <td>$3,200.00</td>
+                            <td>Amex</td>
+                            <td><span class="status-badge shipped">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Clients Content -->
+        <div class="tab-content" id="clients">
+            <div class="admin-stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users-crown"></i></div>
+                    <div class="stat-details">
+                        <span class="stat-label">VIP Clientele</span>
+                        <h2 class="stat-value">85</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="stat-details">
+                        <span class="stat-label">Average LTV</span>
+                        <h2 class="stat-value">$18.5k</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="data-table-card">
+                <div class="card-title-row">
+                    <h2>Active CRM Profiles</h2>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Member</th>
+                            <th>Last Purchase</th>
+                            <th>Tier</th>
+                            <th>Spent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="customer-cell">
+                                <img src="https://ui-avatars.com/api/?name=L+E&background=1a1510&color=c5a059"
+                                    class="customer-img">
+                                <span>Lady Eleanor</span>
+                            </td>
+                            <td>2 days ago</td>
+                            <td><span class="status-badge delivered"
+                                    style="background: var(--admin-accent-light); color: var(--admin-accent);">Royal
+                                    VIP</span></td>
+                            <td><strong>$245,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="customer-cell">
+                                <img src="https://ui-avatars.com/api/?name=J+W&background=eee" class="customer-img">
+                                <span>James White</span>
+                            </td>
+                            <td>12 days ago</td>
+                            <td><span class="status-badge shipped">Premium</span></td>
+                            <td><strong>$12,800</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Bespoke Log Content -->
+        <div class="tab-content" id="bespoke">
+            <div class="card-title-row" style="margin-bottom: 25px;">
+                <h2 style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif;">Custom Commission Board</h2>
+            </div>
+            <div class="admin-grid">
+                <div class="chart-card">
+                    <h3>Commission Funnel</h3>
+                    <p style="font-size: 0.8rem; color: #999; margin-bottom: 20px;">Lead to high-value conversion flow.
+                    </p>
+                    <div class="funnel-container">
+                        <div class="funnel-stage" style="width: 100%;">Inquiries (120)</div>
+                        <div class="funnel-stage" style="width: 80%; opacity: 0.9;">Discovery (96)</div>
+                        <div class="funnel-stage" style="width: 60%; opacity: 0.8;">Design Phase (72)</div>
+                        <div class="funnel-stage" style="width: 40%; opacity: 0.7;">Production (28)</div>
+                        <div class="funnel-stage"
+                            style="width: 25%; opacity: 0.6; background: var(--admin-accent); color: white;">Final
+                            Delivery (14)</div>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <h3>Active Project Timeline</h3>
+                    <div style="margin-top: 25px;">
+                        <div class="gantt-row" style="margin-bottom: 25px;">
+                            <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;">Emerald Gala Suit <span
+                                    style="float: right; color: #999;">60%</span></p>
+                            <div class="gantt-bar">
+                                <div class="gantt-fill" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div class="gantt-row" style="margin-bottom: 25px;">
+                            <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;">Sky Bound Platinum <span
+                                    style="float: right; color: #999;">85%</span></p>
+                            <div class="gantt-bar">
+                                <div class="gantt-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="gantt-row">
+                            <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;">Noir Luxe Cuff <span
+                                    style="float: right; color: #999;">30%</span></p>
+                            <div class="gantt-bar">
+                                <div class="gantt-fill" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Bespoke Charts Row -->
+            <div class="admin-grid" style="margin-top: 30px;">
+                <div class="chart-card" style="flex: 1;">
+                    <h3>Inquiry Sources</h3>
+                    <p style="font-size: 0.8rem; color: #999; margin-bottom: 10px;">Where bespoke clients originate.</p>
+                    <div class="bar-chart-v">
+                        <div class="bar-v-item" style="height: 75%;" data-label="Insta"></div>
+                        <div class="bar-v-item" style="height: 40%;" data-label="Ref"></div>
+                        <div class="bar-v-item" style="height: 90%;" data-label="VIP"></div>
+                        <div class="bar-v-item" style="height: 30%;" data-label="Ads"></div>
+                    </div>
+                </div>
+                <div class="chart-card" style="flex: 1;">
+                    <h3>Designer Load</h3>
+                    <p style="font-size: 0.8rem; color: #999; margin-bottom: 20px;">Active sessions per concierge.</p>
+                    <div style="margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                            <span style="font-size: 0.8rem;">Master Craftsman</span>
+                            <span style="font-size: 0.8rem; font-weight: 700;">8 Active</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                            <span style="font-size: 0.8rem;">Gemologist</span>
+                            <span style="font-size: 0.8rem; font-weight: 700;">3 Active</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="font-size: 0.8rem;">Junior Stylist</span>
+                            <span style="font-size: 0.8rem; font-weight: 700;">12 Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="bespoke-board">
+                <div class="board-column">
+                    <h4>Discovery <span>2</span></h4>
+                    <div class="bespoke-card">
+                        <h5 style="margin-bottom: 10px;">Emerald Gala Suite</h5>
+                        <p style="font-size: 0.75rem; color: #999;">Client: Count Cavalli</p>
+                        <div
+                            style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.7rem; color: var(--admin-accent); font-weight: 700;">PHASE
+                                1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="board-column">
+                    <h4>Sketching <span>1</span></h4>
+                    <div class="bespoke-card" style="border-left: 3px solid var(--admin-accent);">
+                        <h5 style="margin-bottom: 10px;">Platinum Horizon II</h5>
+                        <p style="font-size: 0.75rem; color: #999;">Client: Marcus Thorne</p>
+                        <div style="margin-top: 15px;">
+                            <progress value="45" max="100"
+                                style="width: 100%; height: 4px; border-radius: 4px;"></progress>
+                        </div>
+                    </div>
+                </div>
+                <div class="board-column">
+                    <h4>Production <span>3</span></h4>
+                    <div class="bespoke-card">
+                        <h5 style="margin-bottom: 10px;">Solaris Gold Cuff</h5>
+                        <p style="font-size: 0.75rem; color: #999;">Client: Sophie King</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concierge Chat Content -->
+        <div class="tab-content" id="stylist">
+            <!-- Concierge KPI Row -->
+            <div class="admin-stats-row">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                        <span class="trend up">+24%</span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Total Inquiries</span>
+                        <h2 class="stat-value">1,542</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="color: #4caf50;"><i class="fas fa-clock"></i></div>
+                        <span class="trend up">45s</span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Avg. Response</span>
+                        <h2 class="stat-value">1.2m</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="color: #2196f3;"><i class="fas fa-user-tie"></i></div>
+                        <span class="trend up">Active</span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Online Stylists</span>
+                        <h2 class="stat-value">12</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="color: #f44336;"><i class="fas fa-star-half-alt"></i></div>
+                        <span class="trend up">+0.5</span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Rating</span>
+                        <h2 class="stat-value">4.9/5</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <div class="chart-card">
+                    <div class="card-title-row">
+                        <h2>Live Styling Queue</h2>
+                        <span class="status-badge processing">Real-time</span>
+                    </div>
+                    <ul class="activity-list" style="list-style: none; padding: 0; margin-top: 20px;">
+                        <li
+                            style="display: flex; gap: 15px; margin-bottom: 30px; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--admin-border);">
+                            <div
+                                style="width: 12px; height: 12px; border-radius: 50%; background: #4caf50; box-shadow: 0 0 10px #4caf50;">
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <p style="font-size: 0.9rem; margin: 0;"><strong>Mira Rossi</strong> is viewing 'Emerald
+                                    Collection'</p>
+                                <small style="color: #999;">Session Duration: 12m 40s</small>
+                            </div>
+                            <button class="btn-gold" style="padding: 8px 18px; font-size: 0.8rem;">JOIN CHAT</button>
+                        </li>
+                        <li
+                            style="display: flex; gap: 15px; margin-bottom: 30px; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--admin-border);">
+                            <div
+                                style="width: 12px; height: 12px; border-radius: 50%; background: #ffc107; box-shadow: 0 0 10px #ffc107;">
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <p style="font-size: 0.9rem; margin: 0;"><strong>Thomas Blake</strong> requested expert
+                                    advice</p>
+                                <small style="color: #999;">Waiting for 4m 12s</small>
+                            </div>
+                            <button class="btn-gold" style="padding: 8px 18px; font-size: 0.8rem;">ASSIGN NOW</button>
+                        </li>
+                        <li style="display: flex; gap: 15px; align-items: center;">
+                            <div
+                                style="width: 12px; height: 12px; border-radius: 50%; background: #4caf50; box-shadow: 0 0 10px #4caf50;">
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <p style="font-size: 0.9rem; margin: 0;"><strong>Countess Elena</strong> is uploading
+                                    sketches</p>
+                                <small style="color: #999;">Active Session: 5m 20s</small>
+                            </div>
+                            <button class="btn-gold" style="padding: 8px 18px; font-size: 0.8rem;">JOIN CHAT</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="activity-card"
+                    style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="margin-bottom: 30px; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">Client
+                        Satisfaction</h3>
+                    <div class="progress-circle-container" style="margin: 0 auto 30px;">
+                        <svg viewBox="0 0 36 36" style="width: 100%; height: 100%;">
+                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none" stroke="#eee" stroke-width="2" />
+                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none" stroke="var(--admin-accent)" stroke-width="2" stroke-dasharray="92, 100" />
+                        </svg>
+                        <div class="progress-text">
+                            <span style="font-size: 1.8rem;">92%</span>
+                            <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 1px;">
+                                Score</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666; font-style: italic;">"Exceeding expectations in concierge
+                        engagement over the last 30 days."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Reports Content -->
+        <div class="tab-content" id="analytics">
+            <!-- Top KPI Row -->
+            <div class="admin-stats-row">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon"><i class="fas fa-gem"></i></div>
+                        <span class="trend up">+15%</span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Total Revenue</span>
+                        <h2 class="stat-value">$142,500</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="color: #4caf50;"><i class="fas fa-shopping-bag"></i></div>
+                        <span class="trend up">+8%</span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Active Orders</span>
+                        <h2 class="stat-value">342</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="color: #2196f3;"><i class="fas fa-users-crown"></i></div>
+                        <span class="trend up">+12%</span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Elite Clients</span>
+                        <h2 class="stat-value">1,204</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="color: #ff9800;"><i class="fas fa-chart-line"></i></div>
+                        <span class="trend down">-2%</span>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Conversion Rate</span>
+                        <h2 class="stat-value">4.2%</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major Charts Row -->
+            <div class="infographic-row" style="margin-top: 0;">
+                <div class="chart-card" style="flex: 1.2;">
+                    <div class="card-title-row">
+                        <h2>Growth Trend</h2>
+                        <span style="font-size: 0.8rem; color: #999;">Annual performance spline</span>
+                    </div>
+                    <svg viewBox="0 0 500 200" class="line-graph" style="height: 250px;">
+                        <path class="line-path" d="M0,180 Q80,160 120,80 T240,100 T360,40 T500,60" />
+                        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:var(--admin-accent);stop-opacity:0.2" />
+                            <stop offset="100%" style="stop-color:var(--admin-accent);stop-opacity:0" />
+                        </linearGradient>
+                        <path d="M0,180 Q80,160 120,80 T240,100 T360,40 T500,60 L500,200 L0,200 Z"
+                            fill="url(#lineGrad)" />
+                    </svg>
+                </div>
+                <div class="chart-card" style="flex: 0.8;">
+                    <div class="card-title-row">
+                        <h2>Revenue Split</h2>
+                    </div>
+                    <div class="donut-chart" style="width: 200px; height: 200px;">
+                        <svg viewBox="0 0 36 36" style="width: 100%; height: 100%;">
+                            <circle class="donut-segment" cx="18" cy="18" r="15.9155" stroke="#eee" />
+                            <circle class="donut-segment" cx="18" cy="18" r="15.9155" stroke="var(--admin-accent)"
+                                stroke-dasharray="70 30" stroke-dashoffset="25" />
+                            <circle class="donut-segment" cx="18" cy="18" r="15.9155" stroke="#dab472"
+                                stroke-dasharray="20 80" stroke-dashoffset="5" />
+                        </svg>
+                        <div class="progress-text">
+                            <span style="font-size: 1.2rem;">$142K</span>
+                            <p style="font-size: 0.6rem; color: #999;">Total Rev</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="infographic-row">
+                <div class="chart-card" style="flex: 1;">
+                    <h3>Material Popularity</h3>
+                    <p style="font-size: 0.8rem; color: #999; margin-bottom: 20px;">Radar analysis of raw material
+                        consumption.</p>
+                    <svg viewBox="0 0 200 200" class="radar-chart">
+                        <!-- Radar Grids -->
+                        <polygon points="100,20 180,80 150,170 50,170 20,80" fill="none" stroke="#eee" />
+                        <polygon points="100,50 160,95 135,150 65,150 40,95" fill="none" stroke="#eee" />
+                        <!-- Data Polygon -->
+                        <polygon class="radar-polygon" points="100,35 170,90 140,160 80,150 45,100" />
+                        <!-- Labels (Simplified for SVG) -->
+                        <text x="100" y="15" text-anchor="middle" font-size="8">Diamonds</text>
+                        <text x="185" y="85" text-anchor="start" font-size="8">Gold</text>
+                        <text x="155" y="180" text-anchor="middle" font-size="8">Sapphire</text>
+                        <text x="45" y="180" text-anchor="middle" font-size="8">Emerald</text>
+                        <text x="15" y="85" text-anchor="end" font-size="8">Platinum</text>
+                    </svg>
+                </div>
+                <div class="chart-card" style="flex: 1.5;">
+                    <h3>Regional Sales Density</h3>
+                    <div class="map-container">
+                        <img src="./assets/world-map-dark.png" alt="World Map"
+                            style="height: 100%; opacity: 0.7; object-fit: contain;">
+                        <!-- Mock Map Hotspots -->
+                        <div class="map-hotspot" style="top: 40%; left: 46%;"></div>
+                        <div class="map-hotspot" style="top: 35%; left: 78%; animation-delay: 0.5s;"></div>
+                        <div class="map-hotspot" style="top: 55%; left: 25%; animation-delay: 1s;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-grid" style="margin-top: 30px;">
+                <div class="chart-card">
+                    <h3>Price Bracket Density</h3>
+                    <p style="font-size: 0.8rem; color: #999; margin-bottom: 15px;">Sales volume by price tier
+                        ($/1,000).</p>
+                    <div class="bar-chart-v">
+                        <div class="bar-v-item" style="height: 25%; animation-delay: 0.1s;" data-label="<5k"></div>
+                        <div class="bar-v-item" style="height: 65%; animation-delay: 0.2s;" data-label="5-15k"></div>
+                        <div class="bar-v-item" style="height: 95%; animation-delay: 0.3s;" data-label="15-50k"></div>
+                        <div class="bar-v-item" style="height: 45%; animation-delay: 0.4s;" data-label="50k+"></div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Customer Segments</h3>
+                    <p style="font-size: 0.8rem; color: #999; margin-bottom: 10px;">Relative volume of elite vs regular
+                        buyers.</p>
+                    <div class="bubble-container">
+                        <div class="bubble"
+                            style="width: 90px; height: 90px; top: 15%; left: 15%; animation-delay: 0.5s;">
+                            <span>Royal VIP</span>
+                        </div>
+                        <div class="bubble"
+                            style="width: 70px; height: 70px; top: 20%; right: 15%; background: #dab472; color: #1a1510; animation-delay: 1.2s;">
+                            <span>Elite</span>
+                        </div>
+                        <div class="bubble"
+                            style="width: 110px; height: 110px; bottom: 10%; left: 40%; animation-delay: 0s;">
+                            <span>Premium</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-grid performance-split" style="margin-top: 30px;">
+                    <div class="chart-card">
+                        <h3>Monthly Client Acquisition</h3>
+                        <p style="font-size: 0.8rem; color: #999; margin-bottom: 5px;">New VIP relationships
+                            established.</p>
+                        <svg viewBox="0 0 400 150" class="area-chart">
+                            <path class="area-path"
+                                d="M0,150 L0,120 Q50,110 100,130 T200,80 T300,100 T400,40 L400,150 Z" />
+                            <path d="M0,120 Q50,110 100,130 T200,80 T300,100 T400,40" fill="none"
+                                stroke="var(--admin-accent)" stroke-width="2" />
+                        </svg>
+                        <div
+                            style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.7rem; color: #666;">
+                            <span>Jan</span><span>Mar</span><span>Jun</span><span>Sep</span><span>Dec</span>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Collection Performance</h3>
+                        <p style="font-size: 0.8rem; color: #999; margin-bottom: 20px;">Revenue contribution by
+                            category.</p>
+
+                        <div class="perf-row">
+                            <div class="perf-label">
+                                <span>Celestial Collection</span>
+                                <span>84%</span>
+                            </div>
+                            <div class="perf-bar-bg">
+                                <div class="perf-bar-fill" style="width: 84%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="perf-row">
+                            <div class="perf-label">
+                                <span>Noir Luxe</span>
+                                <span>62%</span>
+                            </div>
+                            <div class="perf-bar-bg">
+                                <div class="perf-bar-fill" style="width: 62%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="perf-row" style="margin-bottom: 0;">
+                            <div class="perf-label">
+                                <span>Royal Emeralds</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="perf-bar-bg">
+                                <div class="perf-bar-fill" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Content -->
+            <div class="tab-content" id="settings">
+                <div class="card-title-row" style="margin-bottom: 30px;">
+                    <h2 style="font-size: 1.8rem; font-family: 'Cormorant Garamond', serif;">System Settings</h2>
+                    <button class="btn-gold" style="padding: 10px 20px; font-size: 0.8rem;">SAVE CHANGES</button>
+                </div>
+
+                <!-- Settings Grid -->
+                <div class="settings-grid">
+                    <!-- Account Settings -->
+                    <div class="settings-card">
+                        <div class="settings-header">
+                            <h3><i class="fas fa-user-cog"></i> Account Settings</h3>
+                            <p style="font-size: 0.8rem; color: #999;">Manage your administrator profile</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="adminName">Administrator Name</label>
+                                <input type="text" id="adminName" class="form-input" value="Alexander Thorne">
+                            </div>
+                            <div class="form-group">
+                                <label for="adminEmail">Email Address</label>
+                                <input type="email" id="adminEmail" class="form-input" value="admin@lumina.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="adminRole">Access Level</label>
+                                <select id="adminRole" class="form-select">
+                                    <option value="super">Super Administrator</option>
+                                    <option value="admin">Administrator</option>
+                                    <option value="manager">Manager</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Store Settings -->
+                    <div class="settings-card">
+                        <div class="settings-header">
+                            <h3><i class="fas fa-store"></i> Store Configuration</h3>
+                            <p style="font-size: 0.8rem; color: #999;">Configure your boutique settings</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="storeName">Store Name</label>
+                                <input type="text" id="storeName" class="form-input" value="LUMINA Luxury Jewelry">
+                            </div>
+                            <div class="form-group">
+                                <label for="storeCurrency">Default Currency</label>
+                                <select id="storeCurrency" class="form-select">
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="AED">AED - UAE Dirham</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="storeTimezone">Timezone</label>
+                                <select id="storeTimezone" class="form-select">
+                                    <option value="UTC">UTC</option>
+                                    <option value="EST">Eastern Time</option>
+                                    <option value="PST">Pacific Time</option>
+                                    <option value="GMT">Greenwich Mean Time</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="settings-card">
+                        <div class="settings-header">
+                            <h3><i class="fas fa-bell"></i> Notifications</h3>
+                            <p style="font-size: 0.8rem; color: #999;">Configure alert preferences</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <label class="toggle-label">
+                                        <input type="checkbox" id="emailNotifications" checked>
+                                        <span class="toggle-slider"></span>
+                                        Email Notifications
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <label class="toggle-label">
+                                        <input type="checkbox" id="smsNotifications">
+                                        <span class="toggle-slider"></span>
+                                        SMS Alerts
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <label class="toggle-label">
+                                        <input type="checkbox" id="orderAlerts" checked>
+                                        <span class="toggle-slider"></span>
+                                        New Order Alerts
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <label class="toggle-label">
+                                        <input type="checkbox" id="inventoryAlerts" checked>
+                                        <span class="toggle-slider"></span>
+                                        Low Stock Warnings
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Settings -->
+                    <div class="settings-card">
+                        <div class="settings-header">
+                            <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                            <p style="font-size: 0.8rem; color: #999;">Manage security preferences</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <label class="toggle-label">
+                                        <input type="checkbox" id="twoFactor" checked>
+                                        <span class="toggle-slider"></span>
+                                        Two-Factor Authentication
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <label class="toggle-label">
+                                        <input type="checkbox" id="sessionTimeout" checked>
+                                        <span class="toggle-slider"></span>
+                                        Auto-Logout (30 min)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="backupFrequency">Backup Frequency</label>
+                                <select id="backupFrequency" class="form-select">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Display Settings -->
+                    <div class="settings-card">
+                        <div class="settings-header">
+                            <h3><i class="fas fa-palette"></i> Display Preferences</h3>
+                            <p style="font-size: 0.8rem; color: #999;">Customize your dashboard appearance</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="theme">Dashboard Theme</label>
+                                <select id="theme" class="form-select">
+                                    <option value="light" selected>Light Mode</option>
+                                    <option value="dark">Dark Mode</option>
+                                    <option value="auto">Auto (System)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="language">Display Language</label>
+                                <select id="language" class="form-select">
+                                    <option value="en" selected>English</option>
+                                    <option value="ar">العربية</option>
+                                    <option value="fr">Français</option>
+                                    <option value="zh">中文</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateFormat">Date Format</label>
+                                <select id="dateFormat" class="form-select">
+                                    <option value="MM/DD/YYYY" selected>MM/DD/YYYY</option>
+                                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- API Settings -->
+                    <div class="settings-card">
+                        <div class="settings-header">
+                            <h3><i class="fas fa-code"></i> API Configuration</h3>
+                            <p style="font-size: 0.8rem; color: #999;">Manage third-party integrations</p>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="stripeKey">Stripe API Key</label>
+                                <input type="password" id="stripeKey" class="form-input" placeholder="sk_live_...">
+                            </div>
+                            <div class="form-group">
+                                <label for="googleAnalytics">Google Analytics ID</label>
+                                <input type="text" id="googleAnalytics" class="form-input" placeholder="G-XXXXXXXXXX">
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <label class="toggle-label">
+                                        <input type="checkbox" id="apiLogging" checked>
+                                        <span class="toggle-slider"></span>
+                                        Enable API Logging
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </main>
+
+    <!-- Dim overlay — click to close sidebar on mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Admin Hamburger Toggle -->
+    <button class="hamburger-v3" id="adminHam">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- JS Logic -->
+    <script>
+        // ── Sidebar DOM references (declared first so closeSidebar works everywhere) ──
+        const adminHam = document.getElementById('adminHam');
+        const adminSidebar = document.getElementById('adminSidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() {
+            if (!adminSidebar) return;
+            adminSidebar.classList.add('animating');
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    adminSidebar.classList.add('active');
+                    if (sidebarOverlay) sidebarOverlay.classList.add('active');
+                });
+            });
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => adminSidebar.classList.remove('animating'), 700);
+        }
+
+        function closeSidebar() {
+            if (!adminSidebar) return;
+            adminSidebar.classList.remove('active', 'animating');
+            if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ── Hamburger button ──
+        if (adminHam && adminSidebar) {
+            adminHam.addEventListener('click', () => {
+                adminSidebar.classList.contains('active') ? closeSidebar() : openSidebar();
+            });
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', () => closeSidebar());
+            }
+        }
+
+        // ── Tab Switching ──
+        const navItems = document.querySelectorAll('.nav-item');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const tabTitle = document.getElementById('tabTitle');
+        const tabSubtitle = document.getElementById('tabSubtitle');
+
+        const tabData = {
+            'dashboard': { title: 'Overview', subtitle: 'Performance metrics for Lumina Atelier.' },
+            'collection': { title: 'Collection Management', subtitle: 'Track and update current jewelry inventory.' },
+            'orders': { title: 'Order History', subtitle: 'Comprehensive log of all curated transactions.' },
+            'clients': { title: 'Clientele CRM', subtitle: 'Detailed relationships and VIP tier management.' },
+            'bespoke': { title: 'Bespoke Requests', subtitle: 'Manage custom commission queues and status.' },
+            'stylist': { title: 'Concierge Chat', subtitle: 'Active styling sessions and client inquiries.' },
+            'analytics': { title: 'Market Reports', subtitle: 'Quarterly trends and sales performance analytics.' },
+            'settings': { title: 'System Settings', subtitle: 'Configure your dashboard preferences and system configuration.' }
+        };
+
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (item.dataset.tab) {
+                    e.preventDefault();
+
+                    // Switch active tab
+                    navItems.forEach(i => i.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    item.classList.add('active');
+
+                    const tabId = item.dataset.tab;
+                    const content = document.getElementById(tabId);
+                    if (content) content.classList.add('active');
+
+                    // Update page header text
+                    if (tabData[tabId]) {
+                        if (tabTitle) tabTitle.innerText = tabData[tabId].title;
+                        if (tabSubtitle) tabSubtitle.innerText = tabData[tabId].subtitle;
+                    }
+
+                    // Close sidebar immediately on mobile
+                    closeSidebar();
+                }
+            });
+        });
+
+        // Language Toggle Logic for Admin
+        const adminLangToggle = document.getElementById('adminLangToggle');
+        if (adminLangToggle) {
+            adminLangToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const currentDir = document.documentElement.getAttribute('dir');
+                const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                document.documentElement.setAttribute('dir', newDir);
+                document.documentElement.lang = newDir === 'rtl' ? 'ar' : 'en';
+            });
+        }
+
+        // Simulating Bar Chart Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.bar-pill');
+            bars.forEach(bar => {
+                const finalHeight = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.height = finalHeight;
+                }, 500);
+            });
+
+            // Debug: Ensure settings tab is accessible
+            const settingsTab = document.getElementById('settings');
+            const settingsNavItem = document.querySelector('[data-tab="settings"]');
+
+            if (settingsTab && settingsNavItem) {
+                console.log('Settings tab found:', settingsTab);
+                console.log('Settings nav item found:', settingsNavItem);
+
+                // Force settings tab to be visible for testing
+                settingsTab.style.display = 'block';
+                settingsTab.classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+/* Modern Hamburger Icon Styles for Mobile */
+.hamburger {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 25000;
+  background: rgba(0, 80, 80, 0.92);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.hamburger:hover {
+  background: rgba(0, 120, 120, 0.95);
+}
+.hamburger-box {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hamburger-inner {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.hamburger-inner::before {
+  top: -8px;
+}
+.hamburger-inner::after {
+  top: 8px;
+}
+.hamburger.active .hamburger-inner {
+  background: transparent;
+}
+.hamburger.active .hamburger-inner::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.hamburger.active .hamburger-inner::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
+}

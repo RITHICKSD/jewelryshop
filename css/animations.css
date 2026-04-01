@@ -1,0 +1,260 @@
+/* 
+   Jewelry Store - Animation System
+   Sections are always visible. Animations are purely CSS entrance effects.
+*/
+
+/* === ENTRANCE ANIMATIONS via CSS (no JS required) === */
+
+/* Fade up — used on most sections */
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeUp 0.9s ease both;
+}
+
+/* Slide from left */
+.reveal-left {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideLeft 0.9s ease both;
+}
+
+/* Slide from right */
+.reveal-right {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideRight 0.9s ease both;
+}
+
+/* Stagger delays using --order CSS custom property */
+.reveal,
+.reveal-left,
+.reveal-right {
+    animation-delay: calc(var(--order, 0) * 0.15s);
+}
+
+/* Hover Zoom */
+.hover-zoom {
+    overflow: hidden;
+}
+
+.hover-zoom img,
+.hover-zoom>img {
+    transition: transform 0.6s ease;
+}
+
+.hover-zoom:hover img,
+.hover-zoom:hover>img {
+    transform: scale(1.08);
+}
+
+/* Gold Glow on hover */
+.gold-glow {
+    transition: box-shadow 0.3s ease;
+}
+
+.gold-glow:hover {
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+}
+
+/* Shimmer for cards */
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-20deg);
+    animation: shimmer 3s infinite;
+}
+
+/* Marquee ribbon */
+.marquee-track {
+    display: flex;
+    gap: 60px;
+    animation: marquee 25s linear infinite;
+    white-space: nowrap;
+}
+
+/* Float effect for icons */
+.float-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ======================== KEYFRAMES ======================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -75%;
+    }
+
+    100% {
+        left: 125%;
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ======================== HERO CINEMATIC KEYFRAMES ======================== */
+
+/* Ken Burns — slow zoom on background image */
+@keyframes heroBgZoom {
+    from {
+        transform: scale(1.12);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Gold shimmer sweep across the full hero */
+@keyframes heroShimmerSweep {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 200%;
+    }
+}
+
+/* Gold lines expand from center outward */
+@keyframes lineExpand {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 120px;
+        opacity: 1;
+    }
+}
+
+/* Script tagline drops in from above */
+@keyframes heroFadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* h1 rises dramatically from below */
+@keyframes heroRiseUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* tagline / buttons fade up */
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll indicator pulse */
+@keyframes scrollPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scaleY(0.7);
+    }
+}

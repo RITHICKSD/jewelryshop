@@ -1,0 +1,702 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | LUMINA Luxury Jewelry</title>
+    <meta name="description"
+        content="Discover LUMINA's premium jewelry services including custom design, repairs, appraisals, and more.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/mobile-nav.css">
+    <link rel="stylesheet" href="css/services.css">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="main-header">
+        <a href="home1.html" class="logo">LU<span>MINA</span></a>
+
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="home1.html">Home 1</a></li>
+                        <li><a href="home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link active">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Dashboard <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-dashboard.html">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </nav>
+
+        <div class="header-utils">
+            <div class="desktop-only">
+                <div class="globe-icon" title="Global">
+                    <i class="fas fa-globe"></i>
+                </div>
+            </div>
+            <a href="login.html" class="login-btn desktop-only">Login</a>
+            <div class="mobile-globe">
+                <div class="globe-icon" title="Toggle RTL/LTR">
+                    <i class="fas fa-globe"></i>
+                </div>
+            </div>
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+
+    </header>
+
+    <main>
+        <!-- Section 1: Hero Banner -->
+        <section class="services-hero">
+            <div class="hero-background">
+                <div class="floating-gems">
+                    <div class="gem gem-1">💎</div>
+                    <div class="gem gem-2">💍</div>
+                    <div class="gem gem-3">👑</div>
+                    <div class="gem gem-4">⭐</div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="hero-layout">
+                    <div class="hero-content">
+                        <h1 class="accent-font fade-in-up">Our Services</h1>
+                        <h2 class="slide-in-left">Exquisite Craftsmanship Meets Exceptional Service</h2>
+                        <p class="fade-in-up">From custom designs to expert repairs, LUMINA offers comprehensive jewelry
+                            services tailored to your unique needs.</p>
+                        <div class="hero-buttons fade-in-up">
+                            <a href="#consultation" class="btn btn-primary">Book Consultation</a>
+                            <a href="#services" class="btn btn-secondary">Explore Services</a>
+                        </div>
+                    </div>
+                    <div class="hero-image fade-in-right">
+                        <img src="assets/h1.jpg" alt="LUMINA Jewelry Services">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Services Overview -->
+        <section class="services-overview">
+            <div class="container">
+                <h2 class="section-title text-center fade-in-up">Our Premium Services</h2>
+                <h3 class="accent-font text-center fade-in-up">Crafted with Precision, Delivered with Care</h3>
+                <div class="services-grid">
+                    <div class="service-card hover-lift">
+                        <div class="service-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h4>Custom Design</h4>
+                        <p>Create unique pieces that tell your personal story with our bespoke design service.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card hover-lift">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Jewelry Repair</h4>
+                        <p>Expert restoration and repair services to bring your treasured pieces back to life.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card hover-lift">
+                        <div class="service-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h4>Appraisal Services</h4>
+                        <p>Professional valuation and certification for insurance and estate purposes.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card hover-lift">
+                        <div class="service-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <h4>Ring Resizing</h4>
+                        <p>Precise resizing services to ensure your rings fit perfectly and comfortably.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card hover-lift">
+                        <div class="service-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h4>Cleaning & Polishing</h4>
+                        <p>Professional cleaning and polishing to restore the brilliance of your jewelry.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card hover-lift">
+                        <div class="service-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4>Stone Setting</h4>
+                        <p>Expert stone setting and replacement services for all types of gemstones.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Custom Design Process -->
+        <section class="design-process">
+            <div class="container">
+                <h2 class="section-title text-center fade-in-up">Custom Design Process</h2>
+                <h3 class="accent-font text-center fade-in-up">From Vision to Reality</h3>
+                <div class="process-timeline">
+                    <div class="process-step slide-in-left">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Consultation</h4>
+                            <p>Meet with our designers to discuss your vision, preferences, and requirements.</p>
+                        </div>
+                    </div>
+                    <div class="process-step slide-in-right">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Design Creation</h4>
+                            <p>Our artists create detailed sketches and 3D renderings of your custom piece.</p>
+                        </div>
+                    </div>
+                    <div class="process-step slide-in-left">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Material Selection</h4>
+                            <p>Choose from our curated collection of precious metals and gemstones.</p>
+                        </div>
+                    </div>
+                    <div class="process-step slide-in-right">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Craftsmanship</h4>
+                            <p>Our master craftsmen bring your design to life with meticulous attention to detail.</p>
+                        </div>
+                    </div>
+                    <div class="process-step slide-in-left">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Final Reveal</h4>
+                            <p>Experience the moment your custom piece is revealed, perfectly crafted to your
+                                specifications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Repair Services -->
+        <section class="repair-services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="repair-content fade-in-up">
+                            <h2 class="section-title">Expert Repair Services</h2>
+                            <h3 class="accent-font">Restoring Beauty, Preserving Memories</h3>
+                            <p>Our skilled artisans specialize in repairing all types of jewelry, from delicate
+                                heirlooms to modern pieces. Using traditional techniques combined with modern
+                                technology, we ensure your jewelry is restored to its original beauty.</p>
+                            <div class="repair-types">
+                                <div class="repair-type">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Chain Repair & Restoration</span>
+                                </div>
+                                <div class="repair-type">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Clasp Replacement</span>
+                                </div>
+                                <div class="repair-type">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Prong Retipping</span>
+                                </div>
+                                <div class="repair-type">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Shank Reconstruction</span>
+                                </div>
+                                <div class="repair-type">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Stone Resetting</span>
+                                </div>
+                                <div class="repair-type">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Engraving Services</span>
+                                </div>
+                            </div>
+                            <a href="#consultation" class="btn btn-primary">Schedule Repair</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="repair-image fade-in-right">
+                            <img src="assets/h2.jpeg" alt="Jewelry Repair">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Appraisal Services -->
+        <section class="appraisal-services">
+            <div class="container">
+                <h2 class="section-title text-center fade-in-up">Professional Appraisal Services</h2>
+                <h3 class="accent-font text-center fade-in-up">Expert Valuation You Can Trust</h3>
+                <div class="appraisal-grid">
+                    <div class="appraisal-card scale-in">
+                        <div class="card-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h4>Insurance Appraisals</h4>
+                        <p>Comprehensive documentation for insurance coverage with detailed descriptions and valuations.
+                        </p>
+                        <ul class="appraisal-features">
+                            <li>Detailed gemstone analysis</li>
+                            <li>Market value assessment</li>
+                            <li>Replacement cost documentation</li>
+                            <li>Photographic documentation</li>
+                        </ul>
+                    </div>
+                    <div class="appraisal-card scale-in">
+                        <div class="card-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h4>Estate Appraisals</h4>
+                        <p>Professional valuation services for estate planning, probate, and equitable distribution.</p>
+                        <ul class="appraisal-features">
+                            <li>Fair market valuation</li>
+                            <li>Legal documentation</li>
+                            <li>Multiple piece assessments</li>
+                            <li>Expert testimony available</li>
+                        </ul>
+                    </div>
+                    <div class="appraisal-card scale-in">
+                        <div class="card-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>Verbal Appraisals</h4>
+                        <p>Quick verbal assessments for casual inquiries and preliminary valuations.</p>
+                        <ul class="appraisal-features">
+                            <li>Immediate evaluation</li>
+                            <li>General value range</li>
+                            <li>Identification services</li>
+                            <li>Recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Cleaning & Care -->
+        <section class="cleaning-services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="cleaning-image fade-in-left">
+                            <img src="assets/h3.jpg" alt="Jewelry Cleaning">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="cleaning-content fade-in-up">
+                            <h2 class="section-title">Professional Cleaning & Care</h2>
+                            <h3 class="accent-font">Restore the Brilliance</h3>
+                            <p>Our professional cleaning services use ultrasonic technology and specialized solutions to
+                                safely remove dirt, oils, and tarnish, restoring your jewelry to its original sparkle.
+                            </p>
+                            <div class="cleaning-benefits">
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="benefit-text">
+                                        <h4>Safe & Gentle</h4>
+                                        <p>Non-abrasive methods perfect for delicate pieces</p>
+                                    </div>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="benefit-text">
+                                        <h4>Expert Results</h4>
+                                        <p>Professional-grade cleaning you can't achieve at home</p>
+                                    </div>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="benefit-text">
+                                        <h4>Quick Service</h4>
+                                        <p>Most cleaning completed while you wait</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#consultation" class="btn btn-primary">Book Cleaning</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Stone Services -->
+        <section class="stone-services">
+            <div class="container">
+                <h2 class="section-title text-center fade-in-up">Stone Setting & Replacement</h2>
+                <h3 class="accent-font text-center fade-in-up">Expert Gemstone Services</h3>
+                <div class="stone-showcase">
+                    <div class="stone-service rotate-in">
+                        <div class="stone-image">
+                            <img src="assets/clean.jpg" alt="Diamond Setting">
+                        </div>
+                        <div class="stone-info">
+                            <h4>Diamond Setting</h4>
+                            <p>Precision setting of diamonds and other precious stones in various styles and
+                                configurations.</p>
+                            <div class="stone-features">
+                                <span class="feature-tag">Prong Setting</span>
+                                <span class="feature-tag">Bezel Setting</span>
+                                <span class="feature-tag">Pavé Setting</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stone-service rotate-in">
+                        <div class="stone-image">
+                            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300&q=80"
+                                alt="Stone Replacement">
+                        </div>
+                        <div class="stone-info">
+                            <h4>Stone Replacement</h4>
+                            <p>Expert replacement of lost or damaged stones with perfect color and clarity matching.</p>
+                            <div class="stone-features">
+                                <span class="feature-tag">Color Matching</span>
+                                <span class="feature-tag">Size Matching</span>
+                                <span class="feature-tag">Quality Assured</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stone-service rotate-in">
+                        <div class="stone-image">
+                            <img src="assets/j8.jpg" alt="Custom Setting">
+                        </div>
+                        <div class="stone-info">
+                            <h4>Custom Settings</h4>
+                            <p>Bespoke setting designs tailored to your unique gemstone and style preferences.</p>
+                            <div class="stone-features">
+                                <span class="feature-tag">Bespoke Design</span>
+                                <span class="feature-tag">CAD Modeling</span>
+                                <span class="feature-tag">3D Printing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Engraving Services -->
+        <section class="engraving-services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="engraving-content fade-in-up">
+                            <h2 class="section-title">Personalized Engraving</h2>
+                            <h3 class="accent-font">Make It Uniquely Yours</h3>
+                            <p>Add a personal touch to your jewelry with our professional engraving services. From
+                                simple initials to intricate designs, our artisans can engrave messages, dates, and
+                                custom artwork on various metals and materials.</p>
+                            <div class="engraving-options">
+                                <div class="engraving-option">
+                                    <div class="option-icon">
+                                        <i class="fas fa-font"></i>
+                                    </div>
+                                    <h4>Text Engraving</h4>
+                                    <p>Names, dates, messages, and quotes in various fonts and styles</p>
+                                </div>
+                                <div class="engraving-option">
+                                    <div class="option-icon">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <h4>Symbol Engraving</h4>
+                                    <p>Symbols, logos, and custom artwork with precision detail</p>
+                                </div>
+                                <div class="engraving-option">
+                                    <div class="option-icon">
+                                        <i class="fas fa-fingerprint"></i>
+                                    </div>
+                                    <h4>Fingerprint Engraving</h4>
+                                    <p>Unique fingerprint engravings for truly personal pieces</p>
+                                </div>
+                            </div>
+                            <a href="#consultation" class="btn btn-primary">Request Engraving</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="engraving-image fade-in-right">
+                            <img src="assets/j9.jpg" alt="Jewelry Engraving">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Wedding Services -->
+        <section class="wedding-services">
+            <div class="container">
+                <h2 class="section-title text-center fade-in-up">Wedding & Engagement Services</h2>
+                <h3 class="accent-font text-center fade-in-up">Celebrate Your Love Story</h3>
+                <div class="wedding-grid">
+                    <div class="wedding-service hover-glow">
+                        <div class="service-overlay">
+                            <div class="overlay-content">
+                                <h4>Engagement Ring Design</h4>
+                                <p>Create the perfect symbol of your love with our custom engagement ring service.</p>
+                                <a href="#" class="btn btn-secondary">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="service-image">
+                            <img src="assets/h3.jpg" alt="Engagement Rings">
+                        </div>
+                        <div class="service-info">
+                            <h4>Engagement Rings</h4>
+                            <p>Custom design and selection services</p>
+                        </div>
+                    </div>
+                    <div class="wedding-service hover-glow">
+                        <div class="service-overlay">
+                            <div class="overlay-content">
+                                <h4>Wedding Bands</h4>
+                                <p>Matching or complementary wedding bands crafted with precision and love.</p>
+                                <a href="#" class="btn btn-secondary">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80"
+                                alt="Wedding Bands">
+                        </div>
+                        <div class="service-info">
+                            <h4>Wedding Bands</h4>
+                            <p>His, hers, and matching sets</p>
+                        </div>
+                    </div>
+                    <div class="wedding-service hover-glow">
+                        <div class="service-overlay">
+                            <div class="overlay-content">
+                                <h4>Anniversary Gifts</h4>
+                                <p>Commemorative pieces and redesign services for milestone celebrations.</p>
+                                <a href="#" class="btn btn-secondary">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="service-image">
+                            <img src="assets/j5.jpg" alt="Anniversary Gifts">
+                        </div>
+                        <div class="service-info">
+                            <h4>Anniversary Gifts</h4>
+                            <p>Meaningful pieces for special moments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: Consultation Booking -->
+        <section class="consultation-booking" id="consultation">
+            <div class="container">
+                <div class="booking-content">
+                    <h2 class="accent-font fade-in-up">Book Your Consultation</h2>
+                    <h3 class="fade-in-up">Let's Create Something Beautiful Together</h3>
+                    <p class="fade-in-up">Schedule a personalized consultation with our expert jewelers to discuss your
+                        needs and bring your vision to life.</p>
+                    <div class="booking-options fade-in-up">
+                        <div class="booking-option">
+                            <div class="option-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h4>Virtual Consultation</h4>
+                            <p>Connect with us online from anywhere in the world</p>
+                            <a href="#" class="btn btn-secondary">Book Online</a>
+                        </div>
+                        <div class="booking-option">
+                            <div class="option-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <h4>In-Store Visit</h4>
+                            <p>Visit our boutique for a hands-on experience</p>
+                            <a href="#" class="btn btn-secondary">Book Visit</a>
+                        </div>
+                        <div class="booking-option">
+                            <div class="option-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h4>Phone Consultation</h4>
+                            <p>Quick consultation via phone for immediate needs</p>
+                            <a href="#" class="btn btn-secondary">Call Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 11: Service Guarantee -->
+        <section class="service-guarantee">
+            <div class="container">
+                <h2 class="section-title text-center fade-in-up">Our Service Guarantee</h2>
+                <h3 class="accent-font text-center fade-in-up">Quality You Can Trust</h3>
+                <div class="guarantee-grid">
+                    <div class="guarantee-item bounce-in">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>Certified Artisans</h4>
+                        <p>All services performed by certified and experienced jewelers with decades of expertise.</p>
+                    </div>
+                    <div class="guarantee-item bounce-in">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Insurance Coverage</h4>
+                        <p>Your jewelry is fully insured while in our care for complete peace of mind.</p>
+                    </div>
+                    <div class="guarantee-item bounce-in">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Timely Service</h4>
+                        <p>Most services completed within promised timeframe with regular updates.</p>
+                    </div>
+                    <div class="guarantee-item bounce-in">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                        <h4>Satisfaction Guarantee</h4>
+                        <p>We stand behind our work with a comprehensive satisfaction guarantee.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 12: Testimonials -->
+        <section class="service-testimonials">
+            <div class="container">
+                <h2 class="section-title text-center fade-in-up">Client Testimonials</h2>
+                <h3 class="accent-font text-center fade-in-up">Hear From Our Valued Clients</h3>
+                <div class="testimonials-carousel">
+                    <div class="testimonial-card slide-in-left">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>"The custom engagement ring they designed for me exceeded all my expectations. Their
+                                attention to detail and craftsmanship is absolutely remarkable."</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&q=80"
+                                    alt="Client">
+                                <div class="author-info">
+                                    <h4>Sarah Mitchell</h4>
+                                    <p>Custom Design Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card slide-in-right">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>"Their repair service restored my grandmother's heirloom necklace to its original beauty.
+                                I couldn't be happier with the results."</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&q=80"
+                                    alt="Client">
+                                <div class="author-info">
+                                    <h4>Michael Chen</h4>
+                                    <p>Repair Service Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card slide-in-left">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>"The appraisal service was thorough and professional. The detailed documentation they
+                                provided was exactly what I needed for my insurance."</p>
+                            <div class="testimonial-author">
+                                <img src="assets/male.webp" alt="Client">
+                                <div class="author-info">
+                                    <h4>Emily Rodriguez</h4>
+                                    <p>Appraisal Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #0f0d0c; padding: 120px 10% 60px; color: white;">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="home1.html" class="logo">LU<span>MINA</span></a>
+                <p>Since 1988, Lumina has been crafting the world's most exquisite jewelry. Our legacy is built on
+                    the pillars of exceptional craftsmanship, ethical sourcing, and timeless design.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Collections</h4>
+                <ul>
+                    <li><a href="#">Engagement Rings</a></li>
+                    <li><a href="#">Diamond Necklaces</a></li>
+                    <li><a href="#">Gold Bracelets</a></li>
+                    <li><a href="#">Wedding Bands</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Boutique</h4>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Store Locator</a></li>
+                    <li><a href="#">Book Appointment</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 LUMINA LUXURY JEWELRY. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

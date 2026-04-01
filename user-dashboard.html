@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | LUMINA</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/user-dashboard.css">
+    <link rel="stylesheet" href="css/hamburger.css">
+</head>
+
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="home1.html" class="logo">LU<span>MINA</span></a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-group">
+                <span class="nav-label">MY BOUTIQUE</span>
+                <ul>
+                    <li class="nav-item active" data-tab="overview">
+                        <a href="#"><i class="fas fa-gem"></i> <span>Jewel Collection</span></a>
+                    </li>
+                    <li class="nav-item" data-tab="analytics">
+                        <a href="#"><i class="fas fa-chart-pie"></i> <span>Spending Analytics</span></a>
+                    </li>
+                    <li class="nav-item" data-tab="billing">
+                        <a href="#"><i class="fas fa-shopping-bag"></i> <span>My Orders</span></a>
+                    </li>
+                    <li class="nav-item" data-tab="diagnostics">
+                        <a href="#"><i class="fas fa-award"></i> <span>Membership Tier</span></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-label">ASSISTANCE</span>
+                <ul>
+                    <li class="nav-item" data-tab="support">
+                        <a href="#"><i class="fas fa-user-tie"></i> <span>Personal Stylist</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="home1.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="langToggle" title="Toggle RTL/LTR"><i class="fas fa-globe"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Header -->
+        <header class="dash-header">
+            <div class="user-welcome">
+                <div class="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Lady+Eleanor&background=c5a059&color=fff"
+                        alt="User Avatar">
+                </div>
+                <div class="welcome-text">
+                    <p class="greeting">Welcome back to Lumina,</p>
+                    <h1>Lady Eleanor Bennett</h1>
+                    <p class="status"><i class="fas fa-crown"></i> Diamond Circle Member</p>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button class="btn btn-primary btn-new-request">
+                    BOOK BESPOKE APPOINTMENT
+                </button>
+                <div class="header-stats">
+                    <div class="stat-mini">
+                        <span class="stat-value">1,450</span>
+                        <span class="stat-label">Points</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-mini">
+                        <span class="stat-value">8</span>
+                        <span class="stat-label">Pieces</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-mini">
+                        <span class="stat-value rating-a">VI</span>
+                        <span class="stat-label">Tier</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="tab-content active" id="overview">
+            <div class="dashboard-grid">
+                <!-- Quick Info Cards -->
+                <div class="info-card billing-preview glass-card">
+                    <div class="card-icon"><i class="fas fa-wallet"></i></div>
+                    <div class="card-details">
+                        <span class="label">Total Investment</span>
+                        <h3 class="value">$24,850.00</h3>
+                        <span class="change up"><i class="fas fa-arrow-up"></i> +12% Appreciation</span>
+                    </div>
+                </div>
+                <div class="info-card service-preview glass-card">
+                    <div class="card-icon"><i class="fas fa-calendar-day"></i></div>
+                    <div class="card-details">
+                        <span class="label">Next Fitting</span>
+                        <h3 class="value">Mar 15, 2026</h3>
+                        <span class="change"><i class="fas fa-clock"></i> In 10 days</span>
+                    </div>
+                </div>
+                <div class="info-card health-preview glass-card">
+                    <div class="card-icon"><i class="fas fa-shield-heart"></i></div>
+                    <div class="card-details">
+                        <span class="label">Vault Insurance</span>
+                        <h3 class="value">Active</h3>
+                        <span class="tag">Fully Covered</span>
+                    </div>
+                </div>
+
+                <!-- Secondary Cards -->
+                <div class="summary-card glass-card">
+                    <div class="card-header">
+                        <i class="fas fa-ring icon-orange"></i>
+                        <span class="label">WISH LIST</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="large-value">04</h2>
+                        <p class="sub-text">Items waiting for review</p>
+                    </div>
+                    <div class="card-status status-pending"><i class="fas fa-heart"></i></div>
+                </div>
+
+                <div class="summary-card glass-card">
+                    <div class="card-header">
+                        <i class="fas fa-shipping-fast icon-blue"></i>
+                        <span class="label">IN TRANSIT</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="large-value">01</h2>
+                        <p class="sub-text">Arriving from Milan Atelier</p>
+                    </div>
+                    <div class="card-status status-success"><i class="fas fa-truck"></i></div>
+                </div>
+
+                <div class="summary-card glass-card">
+                    <div class="card-header">
+                        <i class="fas fa-star icon-red"></i>
+                        <span class="label">REWARD POINTS</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="large-value">1450</h2>
+                        <p class="sub-text">Points expiring in 90 days</p>
+                    </div>
+                    <div class="card-status"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Recent Activity / Infographics Section -->
+            <div class="content-row">
+                <div class="card glass-card activity-card">
+                    <div class="card-title-row">
+                        <h3>Investment Appreciation</h3>
+                        <select class="chart-filter">
+                            <option>Last 6 Months</option>
+                            <option>Last Year</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <div class="bar-chart">
+                            <div class="bar" style="height: 40%" data-label="Oct" data-value="+$240"></div>
+                            <div class="bar" style="height: 55%" data-label="Nov" data-value="+$310"></div>
+                            <div class="bar" style="height: 75%" data-label="Dec" data-value="+$450"></div>
+                            <div class="bar active" style="height: 85%" data-label="Jan" data-value="+$520"></div>
+                            <div class="bar" style="height: 70%" data-label="Feb" data-value="+$410"></div>
+                            <div class="bar" style="height: 95%" data-label="Mar" data-value="+$600"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card glass-card notifications-card">
+                    <h3>Concierge Alerts</h3>
+                    <ul class="alert-list">
+                        <li>
+                            <div class="alert-icon info"><i class="fas fa-gem"></i></div>
+                            <div class="alert-info">
+                                <strong>Private Viewing Invite</strong>
+                                <span>Midnight Orchid preview starting soon.</span>
+                                <small>Just now</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="alert-icon warn"><i class="fas fa-tools"></i></div>
+                            <div class="alert-info">
+                                <strong>Polish Service Due</strong>
+                                <span>Your Soleil D'Or ring is due for maintenance.</span>
+                                <small>Yesterday</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="alert-icon success"><i class="fas fa-certificate"></i></div>
+                            <div class="alert-info">
+                                <strong>Appraisal Updated</strong>
+                                <span>Digital certificates available for download.</span>
+                                <small>2 days ago</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Tabs Content -->
+        <div class="tab-content" id="analytics">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Collection Analytics</h2>
+                    <p>Detailed breakdown of your jewelry portfolio value and distribution.</p>
+                </div>
+
+                <div class="stats-overview">
+                    <div class="stat-box glass-card">
+                        <span class="label">Portfolio Value</span>
+                        <span class="value">$24,850</span>
+                        <div class="mini-trend up">+8.5% YOY</div>
+                    </div>
+                    <div class="stat-box glass-card">
+                        <span class="label">Most Owned</span>
+                        <span class="value">Diamonds <small>62%</small></span>
+                        <div class="status-indicator active">Stable Market</div>
+                    </div>
+                    <div class="stat-box glass-card">
+                        <span class="label">Loyalty Tier</span>
+                        <span class="value">Diamond <small>Circle</small></span>
+                        <div class="action-link">View Benefits <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="card glass-card">
+                        <h3>Collection Distribution</h3>
+                        <div class="pie-placeholder">
+                            <div class="pie-segment segment-1" title="Rings"></div>
+                            <div class="pie-segment segment-2" title="Necklaces"></div>
+                            <div class="pie-segment segment-3" title="Watches"></div>
+                        </div>
+                        <ul class="pie-legend">
+                            <li><span class="dot k"></span> Rings (45%)</li>
+                            <li><span class="dot b"></span> Necklaces (35%)</li>
+                            <li><span class="dot g"></span> Watches (20%)</li>
+                        </ul>
+                    </div>
+                    <div class="card glass-card">
+                        <h3>Investment Score</h3>
+                        <div class="gauge-container">
+                            <svg viewBox="0 0 100 50">
+                                <path class="gauge-bg" d="M10,50 A40,40 0 0,1 90,50" fill="none" stroke-width="10" />
+                                <path class="gauge-fill" d="M10,50 A40,40 0 0,1 90,50" fill="none" stroke-width="10"
+                                    stroke-dasharray="125" stroke-dashoffset="15" />
+                            </svg>
+                            <div class="gauge-value">Premium</div>
+                        </div>
+                        <p class="gauge-label">Your collection is in the top 3% of appreciation!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="billing">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-shopping-bag"></i> My Purchase History</h2>
+                    <p>Access your past orders, invoices, and digital certificates.</p>
+                </div>
+
+                <div class="billing-actions">
+                    <div class="balance-card dash-header gold-header">
+                        <div class="balance-info">
+                            <span>Lumina Credit</span>
+                            <h2>$500.00</h2>
+                            <p>Available for your next bespoke piece</p>
+                        </div>
+                        <button class="btn btn-secondary">REDEEM POINTS</button>
+                    </div>
+                </div>
+
+                <div class="invoice-history">
+                    <h3>Order History</h3>
+                    <div class="invoice-table glass-card">
+                        <div class="table-row header">
+                            <span>Order ID</span>
+                            <span>Item</span>
+                            <span>Value</span>
+                            <span>Status</span>
+                            <span>Cert</span>
+                        </div>
+                        <div class="table-row">
+                            <span>#LU-9921</span>
+                            <span>Soleil D'Or Ring</span>
+                            <strong>$5,200.00</strong>
+                            <span class="status-tag paid">Delivered</span>
+                            <a href="#" class="btn-icon"><i class="fas fa-file-pdf"></i></a>
+                        </div>
+                        <div class="table-row">
+                            <span>#LU-9810</span>
+                            <span>Diamond Droplet</span>
+                            <strong>$1,200.00</strong>
+                            <span class="status-tag paid">In Vault</span>
+                            <a href="#" class="btn-icon"><i class="fas fa-file-pdf"></i></a>
+                        </div>
+                        <div class="table-row">
+                            <span>#LU-9705</span>
+                            <span>Celestial Blue Set</span>
+                            <strong>$14,500.00</strong>
+                            <span class="status-tag paid">Delivered</span>
+                            <a href="#" class="btn-icon"><i class="fas fa-file-pdf"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="diagnostics">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-award"></i> Membership & Benefits</h2>
+                    <p>Your standing within the Lumina elite circle.</p>
+                </div>
+
+                <!-- Tier Status Overview -->
+                <div class="diagnostics-grid">
+                    <div class="diag-item glass-card card-glow">
+                        <div class="diag-info">
+                            <span>Diamond Tier Progress</span>
+                            <span class="status-tag online">NEXT: ROYAL</span>
+                        </div>
+                        <div class="status-bar">
+                            <div class="fill" style="width: 85%"></div>
+                        </div>
+                        <div class="diag-meta">$5,150 more to Royal Tier</div>
+                    </div>
+                    <div class="diag-item glass-card">
+                        <div class="diag-info">
+                            <span>Annual Maintenance</span>
+                            <span class="status-tag warn">ACTION REQ.</span>
+                        </div>
+                        <div class="status-bar warn">
+                            <div class="fill" style="width: 25%"></div>
+                        </div>
+                        <div class="diag-meta">2 Pieces awaiting cleaning</div>
+                    </div>
+                </div>
+
+                <!-- Loyalty Journey Infographic -->
+                <div class="loyalty-journey glass-card">
+                    <h3>Your Lumina Journey</h3>
+                    <div class="journey-timeline">
+                        <div class="journey-step completed">
+                            <div class="step-icon"><i class="fas fa-check"></i></div>
+                            <div class="step-content">
+                                <strong>Silver</strong>
+                                <span>Unlocked 2022</span>
+                            </div>
+                        </div>
+                        <div class="journey-step completed">
+                            <div class="step-icon"><i class="fas fa-check"></i></div>
+                            <div class="step-content">
+                                <strong>Gold</strong>
+                                <span>Unlocked 2023</span>
+                            </div>
+                        </div>
+                        <div class="journey-step current">
+                            <div class="step-icon"><i class="fas fa-gem"></i></div>
+                            <div class="step-content">
+                                <strong>Diamond</strong>
+                                <span>Active since 2025</span>
+                            </div>
+                        </div>
+                        <div class="journey-step locked">
+                            <div class="step-icon"><i class="fas fa-crown"></i></div>
+                            <div class="step-content">
+                                <strong>Royal</strong>
+                                <span>Estimated: Q4 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exclusive Perk Grid -->
+                <div class="perks-section">
+                    <h3>Current Diamond Perks</h3>
+                    <div class="perks-grid">
+                        <div class="perk-card glass-card">
+                            <i class="fas fa-truck-fast"></i>
+                            <h4>Insured Shipping</h4>
+                            <p>Free global shipping on all future purchases.</p>
+                        </div>
+                        <div class="perk-card glass-card">
+                            <i class="fas fa-tools"></i>
+                            <h4>Lifetime Polishing</h4>
+                            <p>Complimentary annual service for all Lumina pieces.</p>
+                        </div>
+                        <div class="perk-card glass-card">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <h4>VIP Invitations</h4>
+                            <p>Priority access to Milan Atelier collection drops.</p>
+                        </div>
+                        <div class="perk-card glass-card">
+                            <i class="fas fa-user-secret"></i>
+                            <h4>Bespoke Priority</h4>
+                            <p>Fast-track queue for custom commissions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Royal Tier Preview -->
+                <div class="next-tier-hero gold-header glass-card">
+                    <div class="hero-content">
+                        <span class="badge">UNLOCKING NEXT</span>
+                        <h2>Royal Circle Benefits</h2>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-star"></i> Private Concierge line 24/7</li>
+                            <li><i class="fas fa-gem"></i> Personal Master Gemologist consultation</li>
+                            <li><i class="fas fa-plane"></i> Complimentary flight to Milan Boutique</li>
+                        </ul>
+                        <button class="btn btn-primary">VIEW ALL ROYAL BENEFITS</button>
+                    </div>
+                    <div class="hero-visual">
+                        <img src="https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?auto=format&fit=crop&q=80&w=400"
+                            alt="Royal Rewards">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tab-content" id="support">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-tie"></i> Concierge & Personal Stylist</h2>
+                    <p>Direct access to our master gemologists and style consultants.</p>
+                </div>
+
+                <div class="support-grid">
+                    <div class="support-card glass-card">
+                        <i class="fas fa-comments-dollar"></i>
+                        <h3>Stylist Chat</h3>
+                        <p>Direct line to Sarianna Rossi</p>
+                        <button class="btn btn-primary">CONNECT NOW</button>
+                    </div>
+                    <div class="support-card glass-card">
+                        <i class="fas fa-gem"></i>
+                        <h3>Bespoke Request</h3>
+                        <p>Start a unique commission</p>
+                        <button class="btn btn-outline">SUBMIT BRIEF</button>
+                    </div>
+                    <div class="support-card glass-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Private Concierge</h3>
+                        <p>Priority support line</p>
+                        <button class="btn btn-outline">+1 (800) LUMINA-VIP</button>
+                    </div>
+                </div>
+
+                <div class="faq-preview glass-card">
+                    <h3>Collector's Guides</h3>
+                    <ul class="faq-list">
+                        <li>Caring for your 18K gold collection <i class="fas fa-chevron-right"></i></li>
+                        <li>Understanding GIA certification <i class="fas fa-chevron-right"></i></li>
+                        <li>Bespoke commission timeline guide <i class="fas fa-chevron-right"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- High-End Premium Hamburger for Mobile -->
+    <button class="hamburger-v2" id="hamburgerToggle" aria-label="Open navigation menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+    </button>
+
+
+
+
+    <!-- JS Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        // Tab Switching Logic
+        const navItems = document.querySelectorAll('.nav-item');
+        const tabContents = document.querySelectorAll('.tab-content');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (item.dataset.tab) {
+                    e.preventDefault();
+                    navItems.forEach(i => i.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    item.classList.add('active');
+                    document.getElementById(item.dataset.tab).classList.add('active');
+                    if (window.innerWidth <= 768) {
+                        document.getElementById('sidebar').classList.remove('active');
+                        document.body.classList.remove('sidebar-open');
+                        // Restore hamburger visibility after sidebar closes
+                        const ham = document.getElementById('hamburgerToggle');
+                        if (ham) ham.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Premium Sidebar Toggle Logic
+        const hamburger = document.getElementById('hamburgerToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        if (hamburger && sidebar) {
+            const toggleSidebar = () => {
+                const isOpen = sidebar.classList.toggle('active');
+                hamburger.classList.toggle('active');
+
+                if (isOpen) {
+                    document.body.classList.add('sidebar-open');
+                    // Stagger the nav items entrance
+                    const navItems = sidebar.querySelectorAll('.nav-item');
+                    navItems.forEach((item, index) => {
+                        item.style.transitionDelay = `${index * 0.05}s`;
+                    });
+                } else {
+                    document.body.classList.remove('sidebar-open');
+                }
+            };
+
+            hamburger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleSidebar();
+            });
+
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                    if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+                        toggleSidebar();
+                    }
+                }
+            });
+
+            // Close on escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                    toggleSidebar();
+                }
+            });
+        }
+
+
+
+        // Language Toggle
+        const langToggle = document.getElementById('langToggle');
+        if (langToggle) {
+            langToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const currentDir = document.documentElement.getAttribute('dir');
+                const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                document.documentElement.setAttribute('dir', newDir);
+                document.documentElement.lang = newDir === 'rtl' ? 'ar' : 'en';
+            });
+        }
+    </script>
+</body>
+
+</html>

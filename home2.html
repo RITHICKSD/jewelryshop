@@ -1,0 +1,997 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMINA | Home 2 - The Cinematic Experience</title>
+    <meta name="description"
+        content="Experience the ultimate in luxury jewelry. Home 2 presents an editorial view of our finest collections.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <!-- Font Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&family=Great+Vibes&display=block"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/mobile-nav.css">
+    <!-- External Assets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Home 2 Unique Styles */
+        :root {
+            --h2-accent: #c5a059;
+            --h2-dark: #12100e;
+            --h2-ivory: #fdfbf7;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Zoom Effect */
+        .section-hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .hero-bg-anim {
+            position: absolute;
+            inset: 0;
+            background: url('assets/hero2.jpg') center/cover;
+            animation: kenBurnsZoom 20s infinite alternate;
+            opacity: 0.7;
+        }
+
+        @keyframes kenBurnsZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.15);
+            }
+        }
+
+        .cat-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            background: #eee;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .cat-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .cat-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .cat-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transition: 0.6s;
+            backdrop-filter: blur(0px);
+        }
+
+        .cat-card:hover .cat-overlay {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .press-logo {
+            filter: grayscale(1);
+            opacity: 0.4;
+            transition: 0.4s;
+            max-height: 45px;
+        }
+
+        .press-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        .btn-gold {
+            background: var(--accent-gold);
+            color: white;
+            padding: 18px 45px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: 0.4s;
+            display: inline-block;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .btn-gold:hover {
+            background: transparent;
+            color: var(--accent-gold);
+        }
+
+        /* Mobile specific fixes */
+        @media (max-width: 992px) {
+            .editorial-content {
+                padding: 40px;
+            }
+
+            .content-box {
+                width: 90% !important;
+                margin-right: 5% !important;
+                padding: 40px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-hero .accent-font {
+                margin-top: 100px !important;
+            }
+
+            .section-hero h1 {
+                font-size: 3.2rem !important;
+                letter-spacing: 5px !important;
+            }
+
+            .section-hero p {
+                font-size: 1rem !important;
+            }
+
+            section {
+                padding: 60px 20px !important;
+            }
+
+            .grid-balanced {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+
+            .cat-card {
+                height: 350px !important;
+            }
+
+            h2 {
+                font-size: 2.5rem !important;
+                letter-spacing: 3px !important;
+            }
+
+            h3 {
+                font-size: 2.2rem !important;
+            }
+
+            .serif {
+                font-size: 1.8rem !important;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+
+            .hero-btns a {
+                width: 100%;
+                padding: 18px !important;
+            }
+
+            .press-logo {
+                max-height: 30px;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .trust-badges span:not(.sep) {
+                display: block;
+            }
+
+            .sep {
+                display: none !important;
+            }
+
+            /* Specific Section Stacking */
+            .designer-split {
+                grid-template-columns: 1fr !important;
+                text-align: center !important;
+                gap: 50px !important;
+            }
+
+            .designer-split div:first-child {
+                order: 2;
+                text-align: center !important;
+            }
+
+            .designer-split div:last-child {
+                order: 1;
+            }
+
+            .designer-split img {
+                height: 400px !important;
+                border-left: none !important;
+                border-bottom: 5px solid var(--accent-gold) !important;
+            }
+
+            .rel-stagger {
+                grid-template-columns: 1fr !important;
+                gap: 60px !important;
+            }
+
+            .rel-stagger div:first-child img {
+                height: 450px !important;
+            }
+
+            .rel-stagger div:first-child div {
+                left: 10px !important;
+                bottom: -20px !important;
+                padding: 30px !important;
+                width: calc(100% - 20px) !important;
+            }
+
+            /* Vertical Button Stacks */
+            section:nth-of-type(15) div[style*="flex"],
+            section:nth-of-type(19) div[style*="flex"] {
+                flex-direction: column !important;
+                gap: 20px !important;
+                align-items: center !important;
+            }
+
+            section:nth-of-type(15) a,
+            section:nth-of-type(19) a {
+                width: 100% !important;
+                max-width: 350px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            section:nth-of-type(17) form {
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+
+            section:nth-of-type(17) input,
+            section:nth-of-type(17) button {
+                width: 100% !important;
+            }
+
+            .boutiques-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 20px !important;
+            }
+
+            /* Influencer Gallery Stack */
+            section:nth-of-type(8) .grid-balanced>div:last-child {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+
+            section:nth-of-type(8) .grid-balanced>div:last-child div:nth-child(2) {
+                transform: none !important;
+            }
+
+            .boutiques-grid div {
+                border-right: none !important;
+                border-bottom: 1px solid #f0f0f0;
+                padding: 20px !important;
+            }
+
+            .bridal-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+
+            .bridal-grid div:nth-child(2) {
+                transform: none !important;
+            }
+
+            .gift-split {
+                grid-template-columns: 1fr !important;
+            }
+
+            .gift-split div:last-child {
+                height: 350px !important;
+                min-height: 350px !important;
+            }
+
+            footer .grid-balanced {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 30px !important;
+            }
+
+            footer .grid-balanced div:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="main-header">
+        <a href="home1.html" class="logo">LU<span>MINA</span></a>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#" class="nav-link active">Home <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="home1.html">Home 1</a></li>
+                        <li><a href="home2.html" class="active">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Dashboard <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-dashboard.html">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </nav>
+        <div class="header-utils">
+            <div class="desktop-only">
+                <div class="globe-icon" title="Global"><i class="fas fa-globe"></i></div>
+            </div>
+            <a href="login.html" class="login-btn desktop-only">Login</a>
+            <div class="mobile-globe">
+                <div class="globe-icon" title="Toggle RTL/LTR"><i class="fas fa-globe"></i></div>
+            </div>
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Open navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- SECTION 01: CINEMATIC HERO (FULL WIDTH) -->
+        <section class="section-hero">
+            <div class="hero-bg-anim"></div>
+            <div
+                style="position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.5) 100%);">
+            </div>
+
+            <div style="z-index: 10; text-align: center; color: white; max-width: 1000px; padding: 0 20px;">
+                <span class="accent-font reveal-up active"
+                    style="font-size: 3rem; color: var(--accent-gold); display: block; margin-bottom: 30px;">The 2024
+                    Editorial</span>
+                <h1 class="reveal-up active"
+                    style="font-size: 6.5rem; letter-spacing: 15px; text-transform: uppercase; font-weight: 200; line-height: 1.1; margin-bottom: 35px;">
+                    A CELESTIAL<br>MANIFESTO</h1>
+                <p class="reveal-up active"
+                    style="font-size: 1.2rem; letter-spacing: 2px; color: rgba(255,255,255,0.85); line-height: 2; margin-bottom: 55px; max-width: 750px; margin-left: auto; margin-right: auto;">
+                    Witness the convergence of starlight and high-jewelry. Home 2 presents a sophisticated editorial
+                    perspective on our most exclusive vaults, where every gem tells a story of a thousand years and
+                    every setting is a masterpiece of modern architecture.</p>
+                <div class="reveal-up active hero-btns" style="display: flex; gap: 20px; justify-content: center;">
+                    <a href="#" class="btn-gold" style="padding: 22px 65px;">Explore The Vault</a>
+                    <a href="#"
+                        style="padding: 22px 65px; border: 1px solid white; color: white; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; backdrop-filter: blur(10px); transition: 0.4s;"
+                        onmouseover="this.style.background='white'; this.style.color='black'"
+                        onmouseout="this.style.background='transparent'; this.style.color='white'">View Brand Film</a>
+                </div>
+            </div>
+
+            <div
+                style="position: absolute; bottom: 45px; left: 50%; transform: translateX(-50%); text-align: center; color: rgba(255,255,255,0.4);">
+                <span
+                    style="display: block; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px;">Discovery
+                    Flow</span>
+                <i class="fas fa-chevron-down" style="animation: bounce 2s infinite;"></i>
+            </div>
+        </section>
+
+        <!-- SECTION 02: CATEGORY GRID -->
+        <section class="reveal-up" style="padding: 140px 5%; text-align: center; background: white;">
+            <h2
+                style="font-size: 4rem; letter-spacing: 8px; margin-bottom: 25px; text-transform: uppercase; font-weight: 300;">
+                Curated Chapters</h2>
+            <p
+                style="color: #888; margin-bottom: 90px; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.8; font-size: 1.1rem;">
+                From the geometric precision of our daily essentials to the chaotic brilliance of our high-jewelry
+                collection, navigate through the chapters of LUMINA's artistic legacy.</p>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;" class="grid-balanced">
+                <div class="cat-card">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=500" alt="Necklaces">
+                    <div class="cat-overlay">
+                        <div style="text-align: center;">
+                            <h4 style="letter-spacing: 5px;">NECKLACES</h4>
+                            <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.8; letter-spacing: 2px;">Chains of
+                                Eternal Light</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=500" alt="Rings">
+                    <div class="cat-overlay">
+                        <div style="text-align: center;">
+                            <h4 style="letter-spacing: 5px;">RINGS</h4>
+                            <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.8; letter-spacing: 2px;">Vows of
+                                Architectural Brilliance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <img src="assets/h1.jpg" alt="Earrings">
+                    <div class="cat-overlay">
+                        <div style="text-align: center;">
+                            <h4 style="letter-spacing: 5px;">EARRINGS</h4>
+                            <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.8; letter-spacing: 2px;">
+                                Sculptured Whispers of Fire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <img src="assets/h2.jpeg" alt="Bracelets">
+                    <div class="cat-overlay">
+                        <div style="text-align: center;">
+                            <h4 style="letter-spacing: 5px;">BRACELETS</h4>
+                            <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.8; letter-spacing: 2px;">Circling
+                                the Pulse of Life</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 03: THE MASTER'S QUOTE -->
+        <section class="reveal-up" style="padding: 150px 10%; text-align: center; background: #fdfbf7;">
+            <div style="max-width: 1000px; margin: 0 auto; position: relative; padding: 60px;">
+                <i class="fas fa-quote-left"
+                    style="position: absolute; top: -20px; left: 0; color: #f2ede4; font-size: 10rem; opacity: 0.5;"></i>
+                <h2 class="serif"
+                    style="font-size: 3.5rem; line-height: 1.5; font-style: italic; position: relative; z-index: 1;">"A
+                    diamond is only a rock until it catches the eye of a dreamer. We are not just jewelers; we are the
+                    dreamers of Florence, capturing starlight on porcelain skin since 1924."</h2>
+                <div
+                    style="width: 100px; height: 1px; background: var(--accent-gold); margin: 50px auto; position: relative;">
+                </div>
+                <p class="accent-font" style="font-size: 2.5rem; color: #c5a059;">â€” Alessandro Lumina, Founder</p>
+            </div>
+        </section>
+
+        <!-- SECTION 04: HIGH-JEWELRY FOCUS (GLASS BOX) -->
+        <section class="reveal-up"
+            style="padding: 100px 5%; background: url('https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=2070') center/cover fixed; position: relative; height: 850px; display: flex; align-items: center; justify-content: flex-end;">
+            <div
+                style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18,16,14,0.8) 0%, transparent 70%);">
+            </div>
+            <div class="content-box"
+                style="background: rgba(255,255,255,0.02); backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.1); padding: 90px; width: 45%; margin-right: 5%; color: white; position: relative; box-shadow: 0 50px 120px rgba(0,0,0,0.4);">
+                <span
+                    style="color: var(--accent-gold); letter-spacing: 8px; font-size: 0.85rem; display: block; margin-bottom: 30px; text-transform: uppercase;">The
+                    Craftsmanship Secret</span>
+                <h3 style="font-size: 3.5rem; margin-bottom: 35px; line-height: 1.1; font-weight: 300;">The Absolute
+                    Setting</h3>
+                <p style="margin-bottom: 45px; opacity: 0.85; line-height: 2; font-size: 1.15rem;">Discover our
+                    proprietary 'Invisible Setting', a secret kept for five generations within the Lumina family
+                    atelier. Through painstaking precision and micron-level accuracy, we create a channel where stones
+                    stand edge-to-edge, allowing them to float without metal visible to the human eye. This technique
+                    requires over 1,200 hours of manual labor to master for a single signature necklace.</p>
+                <div style="display: flex; gap: 40px; align-items: center;">
+                    <a href="#"
+                        style="color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); padding-bottom: 8px; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; font-weight: 500;">View
+                        The Collection</a>
+                    <span style="width: 50px; height: 1px; background: rgba(255,255,255,0.2);"></span>
+                    <span style="font-size: 0.75rem; opacity: 0.6; letter-spacing: 5px;">MANUFATTO IN ITALIA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 05: NEW RELEASES (STAGGERED) -->
+        <section class="reveal-up" style="padding: 160px 10%; background: white;">
+            <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 120px; align-items: center;"
+                class="grid-balanced">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=1000"
+                        style="width: 100%; height: 750px; object-fit: cover; box-shadow: 50px 50px 100px rgba(0,0,0,0.08);"
+                        alt="New Ring">
+                    <div
+                        style="position: absolute; bottom: -50px; left: -50px; padding: 60px; background: white; border: 1px solid #f5f5f5; box-shadow: 20px 20px 80px rgba(0,0,0,0.05); text-align: left;">
+                        <h4 style="color: var(--accent-gold); letter-spacing: 5px; text-transform: uppercase;">R01 -
+                            ETERNA</h4>
+                        <p style="font-size: 0.9rem; color: #999; margin-top: 15px; line-height: 1.6;">The Infinite Loop
+                            Cushion Cut<br>Hand-forged Rose Gold</p>
+                        <p style="font-size: 1.1rem; font-weight: 600; margin-top: 25px; letter-spacing: 2px;">Price On
+                            Request</p>
+                    </div>
+                </div>
+                <div>
+                    <h5
+                        style="letter-spacing: 8px; color: var(--accent-gold); margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem;">
+                        THE SEASON'S DEBUT</h5>
+                    <h3 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 40px; font-weight: 300;">The
+                        Solitaire<br>Reimagined</h3>
+                    <p style="color: #666; line-height: 2; margin-bottom: 45px; font-size: 1.2rem;">We've disrupted a
+                        century of jewelry tradition to bring you a setting that captures 35% more light than a standard
+                        cushion cut. By elevating the basket and thinning the prongs to their structural limits, the
+                        diamond is allowed to breathe, pulse, and burn with unmatched fire. Every facets is calculated
+                        to mirror the architecture of the Florence Duomo.</p>
+                    <a href="#" class="btn-gold" style="padding: 22px 55px;">Shop New Releases</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 06: PROCESS ICONS -->
+        <section class="reveal-up"
+            style="padding: 140px 10%; text-align: center; border-top: 1px solid #f0f0f0; background: #fafafa;">
+            <div style="margin-bottom: 100px;">
+                <span
+                    style="letter-spacing: 10px; color: #ccc; font-size: 0.7rem; display: block; margin-bottom: 20px;">LUMINA
+                    PHILOSOPHY</span>
+                <h3 style="font-size: 3.5rem; margin-bottom: 30px; font-weight: 300; letter-spacing: 5px;">The Path of
+                    Perfection</h3>
+                <p style="color: #888; max-width: 700px; margin: 0 auto; line-height: 2; font-size: 1.1rem;">From the
+                    silent depths of the earth to the sun-drenched light of our Florence atelier, witness the rigorous
+                    transformation of rarity into wearable art.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 70px;" class="grid-balanced">
+                <div style="padding: 60px 40px; background: white; box-shadow: 0 30px 70px rgba(0,0,0,0.03); border-radius: 5px; transition: 0.5s;"
+                    onmouseover="this.style.transform='translateY(-15px)'"
+                    onmouseout="this.style.transform='translateY(0)'">
+                    <i class="fas fa-microscope"
+                        style="font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 35px;"></i>
+                    <h4 style="letter-spacing: 4px; margin-bottom: 25px; text-transform: uppercase;">CERTIFIED ORIGIN
+                    </h4>
+                    <p style="color: #888; line-height: 2; font-size: 0.95rem;">Every stone in our vault is selected
+                        through the 'Lumina Protocol'â€”a rigorous vetting process ensuring blockchain-verified origins,
+                        sustainable mining practices, and absolute ethical extraction standards without exception.</p>
+                </div>
+                <div style="padding: 60px 40px; background: white; box-shadow: 0 30px 70px rgba(0,0,0,0.03); border-radius: 5px; border-top: 3px solid var(--accent-gold); transition: 0.5s;"
+                    onmouseover="this.style.transform='translateY(-15px)'"
+                    onmouseout="this.style.transform='translateY(0)'">
+                    <i class="fas fa-pencil-ruler"
+                        style="font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 35px;"></i>
+                    <h4 style="letter-spacing: 4px; margin-bottom: 25px; text-transform: uppercase;">HAND-SKETCHED</h4>
+                    <p style="color: #888; line-height: 2; font-size: 0.95rem;">Conceptualized in Italy by our lead
+                        designers, every piece begins as a gouache painting on vellum. Drafted with architectural
+                        precision, we ensure every angle of light is calculated to maximize brilliance and fire.</p>
+                </div>
+                <div style="padding: 60px 40px; background: white; box-shadow: 0 30px 70px rgba(0,0,0,0.03); border-radius: 5px; transition: 0.5s;"
+                    onmouseover="this.style.transform='translateY(-15px)'"
+                    onmouseout="this.style.transform='translateY(0)'">
+                    <i class="fas fa-fire-alt"
+                        style="font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 35px;"></i>
+                    <h4 style="letter-spacing: 4px; margin-bottom: 25px; text-transform: uppercase;">FORGED TO LAST</h4>
+                    <p style="color: #888; line-height: 2; font-size: 0.95rem;">Over 10,000 hours of combined pressure
+                        and volcanic heat are applied during our proprietary forging process. We ensure our gold and
+                        platinum alloys remain eternal across countless generations to come.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 07: EDITORIAL BANNER 2 -->
+        <section class="reveal-up"
+            style="height: 65vh; background: #000; color: white; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden;">
+            <div
+                style="position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1616161276295-8839077ce65e?q=80&w=2000') center/cover; opacity: 0.4;">
+            </div>
+            <div style="max-width: 900px; position: relative; z-index: 5;">
+                <span
+                    style="letter-spacing: 15px; font-size: 0.85rem; opacity: 0.7; display: block; margin-bottom: 35px;">LIMITED
+                    EDITION VAULT</span>
+                <h2 style="font-size: 4.5rem; text-transform: uppercase; letter-spacing: 20px; font-weight: 200;">The
+                    Onyx Vault</h2>
+                <p
+                    style="margin-top: 30px; opacity: 0.6; letter-spacing: 3px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                    A curated selection of black diamond and midnight sapphire pieces, available only to the chosen few.
+                    One production run. Never repeated.</p>
+                <div style="display: flex; gap: 40px; justify-content: center; margin-top: 50px;">
+                    <a href="#" class="btn-gold" style="background: white; color: black; border-color: white;">Pre-Order
+                        Now</a>
+                    <a href="#"
+                        style="padding: 18px 45px; border: 1px solid rgba(255,255,255,0.3); color: white; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem;">Request
+                        Lookbook</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 08: INFLUENCER/COMMUNITY -->
+        <section class="reveal-up" style="padding: 140px 5%; background: white;">
+            <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 100px; align-items: center;"
+                class="grid-balanced">
+                <div style="text-align: left;">
+                    <h3 style="font-size: 3.5rem; margin-bottom: 35px; line-height: 1.1;">As Worn By The Grand Stages
+                    </h3>
+                    <p style="color: #777; margin-bottom: 45px; line-height: 2; font-size: 1.1rem;">Our creations aren't
+                        meant for silent glass boxes; they're meant for the grand stages of the world. From the Oscars
+                        to the Met Gala, LUMINA has been the choice of legends for over a century, defining the
+                        silhouette of absolute success and artistic grace.</p>
+                    <div style="display: flex; gap: 25px; align-items: center;">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000"
+                            style="width: 85px; height: 85px; border-radius: 50%; opacity: 0.4; object-fit: cover;">
+                        <img src="assets/f1.avif"
+                            style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--accent-gold); object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000"
+                            style="width: 85px; height: 85px; border-radius: 50%; opacity: 0.4; object-fit: cover;">
+                        <div style="margin-left: 20px;">
+                            <p style="font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;">+12.4K GUESTS</p>
+                            <p style="font-size: 0.7rem; color: #aaa;">World Wide Heritage</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div style="background: url('assets/h3.jpg') center/cover; height: 450px; border-radius: 2px;">
+                    </div>
+                    <div
+                        style="background: url('assets/h4.jpg') center/cover; height: 450px; transform: translateY(-40px); border-radius: 2px; box-shadow: 0 40px 80px rgba(0,0,0,0.15);">
+                    </div>
+                    <div
+                        style="background: url('https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=500') center/cover; height: 450px; border-radius: 2px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 09: THE "BRIDAL" SUITE -->
+        <section class="reveal-up" style="padding: 140px 10%; background: #fdfaf5;">
+            <div style="text-align: center; margin-bottom: 80px;">
+                <span
+                    style="letter-spacing: 8px; color: var(--accent-gold); text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 25px;">THE
+                    WEDDING EDITORIAL</span>
+                <h2 class="serif" style="font-size: 4rem; letter-spacing: 2px;">The Promised Rose</h2>
+                <p style="color: #999; max-width: 600px; margin: 30px auto 0; line-height: 1.8;">Curated engagement sets
+                    and bridal masterpieces, hand-forged in Florence to honor the eternal vows of the modern couple.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px;" class="grid-balanced">
+                <div
+                    style="text-align: center; background: white; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.02);">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=500"
+                        style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 30px;">
+                    <h5 style="letter-spacing: 3px; font-weight: 400;">THE PROPOSAL R01</h5>
+                    <p style="color: #aaa; font-size: 0.8rem; margin: 10px 0 20px;">Platinum with 2ct Center Diamond</p>
+                    <p style="color: var(--accent-gold); font-size: 1.2rem; font-weight: 500;">$12,400</p>
+                </div>
+                <div
+                    style="text-align: center; background: white; padding: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.05); transform: translateY(-20px);">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=500"
+                        style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 30px;">
+                    <h5 style="letter-spacing: 3px; font-weight: 400;">CELESTIAL BAND</h5>
+                    <p style="color: #aaa; font-size: 0.8rem; margin: 10px 0 20px;">Rose Gold Ethereal Loop</p>
+                    <p style="color: var(--accent-gold); font-size: 1.2rem; font-weight: 500;">$8,900</p>
+                </div>
+                <div
+                    style="text-align: center; background: white; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.02);">
+                    <img src="assets/h4.jpg"
+                        style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 30px;">
+                    <h5 style="letter-spacing: 3px; font-weight: 400;">ROYAL PEARL</h5>
+                    <p style="color: #aaa; font-size: 0.8rem; margin: 10px 0 20px;">South Sea Pearl & Baguettes</p>
+                    <p style="color: var(--accent-gold); font-size: 1.2rem; font-weight: 500;">$22,000</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="#"
+                    style="color: #222; border-bottom: 1px solid #222; padding-bottom: 5px; letter-spacing: 3px; font-size: 0.8rem;">VIEW
+                    ALL BRIDAL</a>
+            </div>
+        </section>
+
+        <!-- SECTION 10: PRESS SLIDER -->
+        <section class="reveal-up" style="padding: 70px 10%; background: white; border-bottom: 1px solid #f0f0f0;">
+            <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 60px;">
+                <img src="assets/h5.jpg" class="press-logo" alt="Vogue">
+                <img src="assets/h6.jpg" class="press-logo" alt="Harpers Bazaar">
+                <img src="assets/h7.jpg" class="press-logo" alt="Elle">
+                <img src="assets/h8.jpg" class="press-logo" alt="GQ">
+                <img src="assets/j9.jpg" class="press-logo" alt="Forbes">
+            </div>
+        </section>
+
+        <!-- SECTION 11: SUSTAINABILITY ICONS -->
+        <section class="reveal-up" style="padding: 120px 5%; text-align: center; background: white;">
+            <h2 style="font-size: 3rem; margin-bottom: 60px; font-weight: 300; letter-spacing: 4px;">Ethical Brilliance
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;" class="grid-balanced">
+                <div>
+                    <i class="fas fa-hand-holding-heart"
+                        style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 25px;"></i>
+                    <h5 style="letter-spacing: 3px; text-transform: uppercase;">FAIR TRADE</h5>
+                    <p style="font-size: 0.8rem; color: #999; margin-top: 15px; line-height: 1.6;">Direct partnership
+                        with miners ensuring 100% fair living wages.</p>
+                </div>
+                <div>
+                    <i class="fas fa-recycle"
+                        style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 25px;"></i>
+                    <h5 style="letter-spacing: 3px; text-transform: uppercase;">RECYCLED GOLD</h5>
+                    <p style="font-size: 0.8rem; color: #999; margin-top: 15px; line-height: 1.6;">Conflict-free gold
+                        sourced from certified circular refineries.</p>
+                </div>
+                <div>
+                    <i class="fas fa-leaf" style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 25px;"></i>
+                    <h5 style="letter-spacing: 3px; text-transform: uppercase;">ECO-PLANT</h5>
+                    <p style="font-size: 0.8rem; color: #999; margin-top: 15px; line-height: 1.6;">Our Florence
+                        headquarters operates on 100% solar renewable energy.</p>
+                </div>
+                <div>
+                    <i class="fas fa-shield-alt"
+                        style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 25px;"></i>
+                    <h5 style="letter-spacing: 3px; text-transform: uppercase;">LIFETIME COVER</h5>
+                    <p style="font-size: 0.8rem; color: #999; margin-top: 15px; line-height: 1.6;">Complimentary
+                        cleaning and audit for the life of your piece.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 12: DESIGNER SPOTLIGHT -->
+        <section class="reveal-up" style="padding: 140px 10%; background: #12100e; color: white;">
+            <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 100px; align-items: center;"
+                class="grid-balanced">
+                <div style="text-align: right;">
+                    <span class="accent-font"
+                        style="font-size: 2.8rem; display: block; margin-bottom: 25px; color: var(--accent-gold);">Creative
+                        Direction</span>
+                    <h3 style="font-size: 4rem; margin-bottom: 40px; font-weight: 200; letter-spacing: 5px;">Isabella
+                        Lumina</h3>
+                    <p style="color: #888; font-size: 1.2rem; line-height: 1.9; font-weight: 300;">"We don't sell
+                        objects; we sell the way a person feels when they enter a room. The structural gravity of our
+                        high-jewelry is balanced only by its ethereal glow. Every piece I design must sustain a
+                        conversation between the skin and the light, a dialogue that started a century ago in my
+                        great-grandfather's workshop."</p>
+                    <div style="margin-top: 50px;">
+                        <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?q=80&w=1000"
+                            style="display: none;">
+                        <a href="#" class="btn-gold"
+                            style="background: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold);">View
+                            Signature Collection</a>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?q=80&w=1000"
+                        style="width: 100%; height: 650px; object-fit: cover; border-left: 5px solid var(--accent-gold); box-shadow: -30px 30px 80px rgba(0,0,0,0.5);">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 13: WORLD BOUTIQUES -->
+        <section class="reveal-up" style="padding: 120px 10%; text-align: center; background: white;">
+            <h2 style="font-size: 3.5rem; margin-bottom: 80px; font-weight: 300;">Global Flagship Boutiques</h2>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;" class="grid-balanced">
+                <div style="border-right: 1px solid #f0f0f0; padding: 30px;">
+                    <h4 style="color: var(--accent-gold); letter-spacing: 4px; margin-bottom: 15px;">PARIS</h4>
+                    <p style="font-size: 0.85rem; color: #222; font-weight: 600;">Place VendÃ´me, 12</p>
+                    <p style="font-size: 0.75rem; color: #aaa; margin-top: 10px;">The High Jewelry Heart</p>
+                </div>
+                <div style="border-right: 1px solid #f0f0f0; padding: 30px;">
+                    <h4 style="color: var(--accent-gold); letter-spacing: 4px; margin-bottom: 15px;">LONDON</h4>
+                    <p style="font-size: 0.85rem; color: #222; font-weight: 600;">Bond Street, 84</p>
+                    <p style="font-size: 0.75rem; color: #aaa; margin-top: 10px;">The Heritage Vault</p>
+                </div>
+                <div style="border-right: 1px solid #f0f0f0; padding: 30px;">
+                    <h4 style="color: var(--accent-gold); letter-spacing: 4px; margin-bottom: 15px;">NYC</h4>
+                    <p style="font-size: 0.85rem; color: #222; font-weight: 600;">5th Avenue, 725</p>
+                    <p style="font-size: 0.75rem; color: #aaa; margin-top: 10px;">The Modern Atelier</p>
+                </div>
+                <div style="padding: 30px;">
+                    <h4 style="color: var(--accent-gold); letter-spacing: 4px; margin-bottom: 15px;">TOKYO</h4>
+                    <p style="font-size: 0.85rem; color: #222; font-weight: 600;">Ginza Chuo-ku, 4-1</p>
+                    <p style="font-size: 0.75rem; color: #aaa; margin-top: 10px;">The Precision Gallery</p>
+                </div>
+            </div>
+            <div style="margin-top: 60px;">
+                <a href="#"
+                    style="letter-spacing: 3px; font-size: 0.8rem; color: #777; border-bottom: 1px solid #ccc; padding-bottom: 5px;">REQUEST
+                    AN APPOINTMENT</a>
+            </div>
+        </section>
+
+        <!-- SECTION 14: GIFT GUIDE -->
+        <section class="reveal-up" style="padding: 80px 10%; background: #fdfbf7;">
+            <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: stretch;"
+                class="grid-balanced">
+                <div
+                    style="background: white; padding: 80px 60px; text-align: left; display: flex; flex-direction: column; justify-content: center; border: 1px solid #f0f0f0; box-shadow: 0 40px 100px rgba(0,0,0,0.03);">
+                    <i class="fas fa-gift"
+                        style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 30px;"></i>
+                    <h3 style="font-size: 3rem; margin-bottom: 25px; font-weight: 300;">The Art of Giving</h3>
+                    <p style="color: #777; margin-bottom: 45px; line-height: 2; font-size: 1.1rem;">Nothing speaks of
+                        legacy like a LUMINA signature box. Our complimentary gift service includes our iconic ivory
+                        vellum wrapping, wax-sealed authenticity certificate, and hand-written calligraphy cards for
+                        your most cherished moments.</p>
+                    <a href="#" class="btn-gold" style="width: fit-content;">Shop Gift Guide</a>
+                </div>
+                <div
+                    style="background: url('https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1000') center/cover; min-height: 500px; box-shadow: 30px 30px 80px rgba(0,0,0,0.05);">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 15: PERSONAL STYLING -->
+        <section class="reveal-up" style="padding: 150px 10%; text-align: center; background: white;">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <span
+                    style="letter-spacing: 10px; color: var(--accent-gold); text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 30px;">PRIVATE
+                    CLIENT SERVICE</span>
+                <h3 style="font-size: 4rem; margin: 35px 0; font-weight: 200; letter-spacing: 5px;">Private
+                    Consultations</h3>
+                <p style="margin-bottom: 55px; color: #666; font-size: 1.2rem; line-height: 2;">Need expert guidance to
+                    find the perfect heirloom? Book a private 1:1 session with our senior curators. Available in-person
+                    at any of our flagships or virtually via our encrypted luxury suite. Experience a dedicated hour of
+                    history, gemology, and styling tailored strictly to your silhouette.</p>
+                <div style="display: flex; gap: 25px; justify-content: center;">
+                    <a href="#" class="btn-gold" style="padding: 22px 60px;">Book Consultation</a>
+                    <a href="#"
+                        style="padding: 22px 40px; border-bottom: 1px solid #ccc; font-size: 0.8rem; letter-spacing: 3px; display: flex; align-items: center; gap: 10px;">CHAT
+                        WITH A CURATOR <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 16: HERITAGE BANNER -->
+        <section class="reveal-up" style="height: 55vh; position: relative; overflow: hidden;">
+            <div style="position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1541525091217-06489376461a?q=80&w=2000') center/cover; filter: grayscale(1) contrast(1.1); transition: 2s ease;"
+                onmouseover="this.style.filter='grayscale(0) contrast(1)'"
+                onmouseout="this.style.filter='grayscale(1) contrast(1.1)'"></div>
+            <div
+                style="position: absolute; inset: 0; background: rgba(0,0,0,0.45); display: flex; flex-direction: column; align-items: center; justify-content: center; color: white;">
+                <span class="timeless-center-mobile"
+                    style="font-size: 0.8rem; letter-spacing: 12px; margin-bottom: 30px; opacity: 0.6;">TIMELESS
+                    CUSTODIANS</span>
+                <style>
+                    @media (max-width: 600px) {
+                        .timeless-center-mobile {
+                            display: flex !important;
+                            flex-direction: column;
+                            align-items: center !important;
+                            justify-content: center !important;
+                            text-align: center !important;
+                            width: 100% !important;
+                            margin-left: 0 !important;
+                            letter-spacing: 6px !important;
+                        }
+                    }
+                </style>
+                <h2 style="font-size: 6rem; letter-spacing: 25px; font-weight: 100; text-transform: uppercase;">SINCE
+                    1924</h2>
+                <div style="width: 100px; height: 1px; background: rgba(255,255,255,0.3); margin-top: 40px;"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 17: NEWSLETTER -->
+        <section class="reveal-up" style="padding: 120px 10%; background: #fafafa; text-align: center;">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h4 style="letter-spacing: 8px; margin-bottom: 35px; text-transform: uppercase; font-size: 0.9rem;">JOIN
+                    THE LEGACY</h4>
+                <p style="color: #888; margin-bottom: 50px; font-size: 1.1rem; line-height: 1.8;">Subscribe to 'The
+                    Brilliance Ledger' for exclusive first-access to our private vaults, limited edition drops, and
+                    invitations to showroom soirÃ©es.</p>
+                <form style="display: flex; max-width: 650px; margin: 0 auto; gap: 15px;">
+                    <input type="email" placeholder="Your Professional Email"
+                        style="flex: 1; padding: 20px 25px; border: 1px solid #ddd; outline: none; background: white; font-size: 1rem; letter-spacing: 1px;">
+                    <button type="submit" class="btn-gold" style="border: none; cursor: pointer;">Subscribe</button>
+                </form>
+                <p style="font-size: 0.7rem; color: #aaa; margin-top: 25px;">WE RESPECT YOUR PRIVACY. UNSUBSCRIBE
+                    ANYTIME.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 18: TRUST BADGES -->
+        <section class="reveal-up"
+            style="padding: 50px 10%; background: white; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; opacity: 0.6; font-size: 0.75rem; letter-spacing: 4px; color: #222;"
+                class="grid-balanced">
+                <span><i class="fas fa-plane" style="margin-right: 10px;"></i> FREE WORLDWIDE SHIPPING</span>
+                <span style="width: 1px; height: 15px; background: #ddd;"></span>
+                <span><i class="fas fa-undo" style="margin-right: 10px;"></i> 30-DAY ASSURED RETURNS</span>
+                <span style="width: 1px; height: 15px; background: #ddd;"></span>
+                <span><i class="fas fa-lock" style="margin-right: 10px;"></i> SECURE ENCRYPTED PAYMENTS</span>
+                <span style="width: 1px; height: 15px; background: #ddd;"></span>
+                <span><i class="fas fa-medal" style="margin-right: 10px;"></i> LIFETIME ARTISAN WARRANTY</span>
+            </div>
+        </section>
+
+        <!-- SECTION 19: SIGNATURE FINAL CTA -->
+        <section class="reveal-up"
+            style="padding: 180px 10%; text-align: center; background: #12100e; color: white; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--accent-gold);">
+            </div>
+            <h2
+                style="font-size: 7rem; letter-spacing: 30px; text-transform: uppercase; font-weight: 100; line-height: 1;">
+                LUMINA</h2>
+            <p
+                style="letter-spacing: 12px; color: var(--accent-gold); margin: 40px 0 70px; font-size: 1rem; font-weight: 300;">
+                THE PINNACLE OF BRILLIANCE</p>
+            <div style="display: flex; gap: 30px; justify-content: center;">
+                <a href="#" class="btn-gold" style="padding: 25px 90px; font-weight: 600;">Shop All Collections</a>
+                <a href="contact.html"
+                    style="padding: 25px 40px; border: 1px solid rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: white;">Contact
+                    House</a>
+            </div>
+        </section>
+
+        <!-- SECTION 20: FOOTER (EXTENDED) -->
+        <footer style="background: var(--primary-bg); padding: 120px 10% 60px; color: var(--text-dark);">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="home1.html" class="logo">LU<span>MINA</span></a>
+                    <p>Since 1988, Lumina has been crafting the world's most exquisite jewelry. Our legacy is built on
+                        the pillars of exceptional craftsmanship, ethical sourcing, and timeless design.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="#">Engagement Rings</a></li>
+                        <li><a href="#">Diamond Necklaces</a></li>
+                        <li><a href="#">Gold Bracelets</a></li>
+                        <li><a href="#">Wedding Bands</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Boutique</h4>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Store Locator</a></li>
+                        <li><a href="#">Book Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 LUMINA LUXURY JEWELRY. ALL RIGHTS RESERVED.
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Reveal up observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+
+</html>
