@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/mobile-nav.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/contact-faq.css">
+    <link rel="stylesheet" href="css/theme.css">
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -50,8 +51,10 @@
                         <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
                     </ul>
                 </li>
+                <li class="mobile-only">
+                    <a href="login.html" class="nav-login-btn">Login</a>
+                </li>
             </ul>
-            <a href="login.html" class="nav-login-btn">Login</a>
         </nav>
 
         <div class="header-utils">
@@ -66,6 +69,10 @@
                     <i class="fas fa-globe"></i>
                 </div>
             </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+                <i class="fas fa-moon icon-moon"></i>
+                <i class="fas fa-sun icon-sun"></i>
+            </button>
             <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -298,176 +305,7 @@
             </div>
         </section>
 
-        <!-- Section 5: Consultation Booking -->
-        <section class="consultation-section" id="consultation">
-            <div class="container">
-                <h2 class="section-title text-center fade-in-up">Book a Consultation</h2>
-                <h3 class="accent-font text-center fade-in-up">Personalized Jewelry Experience</h3>
-                <div class="consultation-types">
-                    <div class="consultation-card scale-in">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <h4>Virtual Consultation</h4>
-                        </div>
-                        <div class="card-content">
-                            <p>Connect with our jewelry experts from anywhere in the world through secure video
-                                consultation.</p>
-                            <ul class="consultation-features">
-                                <li>HD Video Quality</li>
-                                <li>Screen Sharing for Designs</li>
-                                <li>Flexible Scheduling</li>
-                                <li>Record Session Available</li>
-                            </ul>
-                            <div class="card-footer">
-                                <span class="duration">45 minutes</span>
-                                <span class="price">Complimentary</span>
-                            </div>
-                            <a href="#" class="btn btn-primary">Book Virtual</a>
-                        </div>
-                    </div>
-                    <div class="consultation-card scale-in">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <i class="fas fa-store"></i>
-                            </div>
-                            <h4>In-Store Consultation</h4>
-                        </div>
-                        <div class="card-content">
-                            <p>Visit our flagship boutique for a hands-on experience with our collections and expert
-                                guidance.</p>
-                            <ul class="consultation-features">
-                                <li>Private Consultation Room</li>
-                                <li>View Actual Pieces</li>
-                                <li>Try On Samples</li>
-                                <li>Refreshments Served</li>
-                            </ul>
-                            <div class="card-footer">
-                                <span class="duration">60 minutes</span>
-                                <span class="price">Complimentary</span>
-                            </div>
-                            <a href="#" class="btn btn-primary">Book In-Store</a>
-                        </div>
-                    </div>
-                    <div class="consultation-card scale-in">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h4>Phone Consultation</h4>
-                        </div>
-                        <div class="card-content">
-                            <p>Quick phone consultation for immediate questions and preliminary design discussions.</p>
-                            <ul class="consultation-features">
-                                <li>Quick Response</li>
-                                <li>Expert Advice</li>
-                                <li>Follow-up Email</li>
-                                <li>Flexible Timing</li>
-                            </ul>
-                            <div class="card-footer">
-                                <span class="duration">30 minutes</span>
-                                <span class="price">Complimentary</span>
-                            </div>
-                            <a href="#" class="btn btn-primary">Book Call</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <div class="container">
-                <h2 class="section-title text-center fade-in-up">Frequently Asked Questions</h2>
-                <h3 class="accent-font text-center fade-in-up">Everything You Need to Know</h3>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h4>How long does custom jewelry design take?</h4>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Our custom jewelry design process typically takes 4-6 weeks from initial consultation to
-                                final delivery. This includes design consultation (1 week), material sourcing (1-2
-                                weeks), and craftsmanship (2-3 weeks). Rush orders may be available for an additional
-                                fee.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h4>Do you offer international shipping?</h4>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Yes, we ship worldwide via secure insured shipping through our trusted partners.
-                                International orders typically arrive within 3-7 business days. All packages are fully
-                                insured for their full value and require signature upon delivery for security.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h4>What is your return policy?</h4>
-                        </div>
-                        <div class="faq-answer">
-                            <p>We offer a 30-day return policy for custom pieces and 60-day return policy for
-                                ready-to-ship items. Items must be in original condition with all documentation and
-                                packaging. Custom pieces require a design approval deposit which is non-refundable after
-                                approval.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h4>How do I care for my jewelry?</h4>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Regular cleaning with mild soap and warm water, professional cleaning twice yearly, and
-                                proper storage in our provided jewelry boxes will maintain your pieces' beauty. Avoid
-                                harsh chemicals, extreme temperatures, and store pieces separately to prevent
-                                scratching.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h4>Do you provide jewelry appraisals?</h4>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Yes, we provide professional appraisal services for insurance and estate purposes. Our
-                                certified gemologists offer detailed documentation including color grades, clarity
-                                ratings, and current market valuations. Appraisals typically take 3-5 business days.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h4>What payment methods do you accept?</h4>
-                        </div>
-                        <div class="faq-answer">
-                            <p>We accept all major credit cards (Visa, MasterCard, American Express), bank transfers,
-                                and offer financing options for qualifying purchases. Payment plans are available for
-                                custom designs with 50% deposit required to begin work.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h4>Can you repair jewelry from other brands?</h4>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Absolutely! Our master craftsmen can repair and restore jewelry from any brand. We
-                                provide detailed estimates before any work begins and stand behind our repairs with a
-                                comprehensive warranty covering workmanship and materials.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h4>Do you offer wedding consultations?</h4>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Yes, we specialize in wedding jewelry consultations including engagement rings, wedding
-                                bands, and anniversary gifts. Our experts help couples select or design pieces that
-                                symbolize their unique love story with complimentary consultations.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
     </main>
 

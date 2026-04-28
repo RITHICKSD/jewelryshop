@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/rtl.css">
     <link rel="stylesheet" href="css/mobile-nav.css">
     <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/theme.css">
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -49,8 +50,10 @@
                         <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
                     </ul>
                 </li>
+                <li class="mobile-only">
+                    <a href="login.html" class="nav-login-btn">Login</a>
+                </li>
             </ul>
-            <a href="login.html" class="nav-login-btn">Login</a>
         </nav>
 
         <div class="header-utils">
@@ -65,6 +68,10 @@
                     <i class="fas fa-globe"></i>
                 </div>
             </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+                <i class="fas fa-moon icon-moon"></i>
+                <i class="fas fa-sun icon-sun"></i>
+            </button>
             <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -518,81 +525,9 @@
             </div>
         </section>
 
-        <!-- Section 10: Consultation Booking -->
-        <section class="consultation-booking" id="consultation">
-            <div class="container">
-                <div class="booking-content">
-                    <h2 class="accent-font fade-in-up">Book Your Consultation</h2>
-                    <h3 class="fade-in-up">Let's Create Something Beautiful Together</h3>
-                    <p class="fade-in-up">Schedule a personalized consultation with our expert jewelers to discuss your
-                        needs and bring your vision to life.</p>
-                    <div class="booking-options fade-in-up">
-                        <div class="booking-option">
-                            <div class="option-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <h4>Virtual Consultation</h4>
-                            <p>Connect with us online from anywhere in the world</p>
-                            <a href="#" class="btn btn-secondary">Book Online</a>
-                        </div>
-                        <div class="booking-option">
-                            <div class="option-icon">
-                                <i class="fas fa-store"></i>
-                            </div>
-                            <h4>In-Store Visit</h4>
-                            <p>Visit our boutique for a hands-on experience</p>
-                            <a href="#" class="btn btn-secondary">Book Visit</a>
-                        </div>
-                        <div class="booking-option">
-                            <div class="option-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h4>Phone Consultation</h4>
-                            <p>Quick consultation via phone for immediate needs</p>
-                            <a href="#" class="btn btn-secondary">Call Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 11: Service Guarantee -->
-        <section class="service-guarantee">
-            <div class="container">
-                <h2 class="section-title text-center fade-in-up">Our Service Guarantee</h2>
-                <h3 class="accent-font text-center fade-in-up">Quality You Can Trust</h3>
-                <div class="guarantee-grid">
-                    <div class="guarantee-item bounce-in">
-                        <div class="guarantee-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <h4>Certified Artisans</h4>
-                        <p>All services performed by certified and experienced jewelers with decades of expertise.</p>
-                    </div>
-                    <div class="guarantee-item bounce-in">
-                        <div class="guarantee-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h4>Insurance Coverage</h4>
-                        <p>Your jewelry is fully insured while in our care for complete peace of mind.</p>
-                    </div>
-                    <div class="guarantee-item bounce-in">
-                        <div class="guarantee-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <h4>Timely Service</h4>
-                        <p>Most services completed within promised timeframe with regular updates.</p>
-                    </div>
-                    <div class="guarantee-item bounce-in">
-                        <div class="guarantee-icon">
-                            <i class="fas fa-redo"></i>
-                        </div>
-                        <h4>Satisfaction Guarantee</h4>
-                        <p>We stand behind our work with a comprehensive satisfaction guarantee.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+
 
         <!-- Section 12: Testimonials -->
         <section class="service-testimonials">

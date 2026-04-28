@@ -13,7 +13,8 @@
  */
 
 /* Hidden on desktop — only shown inside hamburger panel via media query */
-.nav-login-btn {
+.nav-login-btn,
+.mobile-only {
     display: none;
 }
 
@@ -491,11 +492,17 @@
 
     /* ════════════════════════════════════════════════════
        11. LOGIN BUTTON inside mobile hamburger panel
-           Full-width gold rectangle, fills on hover.
+           Presented as a list item for consistent stagger.
        ════════════════════════════════════════════════════ */
+    .mobile-only {
+        display: block !important;
+        border-bottom: none !important;
+        margin-top: 15px !important;
+    }
+
     .nav-login-btn {
         display: block !important;
-        margin: 25px 26px 10px !important;
+        margin: 10px 0 !important;
         padding: 16px !important;
         text-align: center !important;
         text-decoration: none !important;
@@ -513,19 +520,10 @@
         border: 1px solid #c5a059 !important;
         background: transparent !important;
         transition: all 0.3s ease !important;
-
-        /* Staggered Entrance */
-        opacity: 0;
-        transform: translateY(15px);
     }
 
-    nav.active .nav-login-btn {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-        transition: opacity .4s ease .52s, transform .4s ease .52s,
-            background .25s ease, color .25s ease !important;
-    }
-
+    /* Transition managed by the parent <li> stagger, 
+       but we can add a specific sub-animation if needed. */
     .nav-login-btn:hover {
         background: #c5a059 !important;
         color: #fff !important;

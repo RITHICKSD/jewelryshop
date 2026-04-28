@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -22,6 +22,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin-dashboard.css">
+    <link rel="stylesheet" href="css/theme.css">
     <style>
         /* ===== ADMIN SIDEBAR MOBILE: FORCE VISIBILITY ===== */
         @media (max-width: 768px) {
@@ -575,12 +576,20 @@
                     <li class="nav-item">
                         <a href="home1.html"><i class="fas fa-sign-out-alt"></i> <span>Exit Dashboard</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" id="adminLangToggle" title="Toggle RTL/LTR"><i class="fas fa-globe"></i></a>
-                    </li>
                 </ul>
             </div>
         </nav>
+        <div class="sidebar-footer">
+            <div class="sidebar-toggles">
+                <a href="#" id="adminLangToggle" title="Toggle RTL/LTR">
+                    <i class="fas fa-globe"></i>
+                </a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
+            </div>
+        </div>
     </aside>
 
     <!-- Main Content -->
@@ -1584,6 +1593,7 @@
     </button>
 
     <!-- JS Logic -->
+    <script src="js/script.js"></script>
     <script>
         // ── Sidebar DOM references (declared first so closeSidebar works everywhere) ──
         const adminHam = document.getElementById('adminHam');
@@ -1694,9 +1704,15 @@
                 console.log('Settings tab found:', settingsTab);
                 console.log('Settings nav item found:', settingsNavItem);
 
-                // Force settings tab to be visible for testing
+            // Force settings tab to be visible for testing
+            if (settingsTab) {
                 settingsTab.style.display = 'block';
                 settingsTab.classList.add('active');
+            }
+            
+            // Re-initialize theme toggle specifically for dashboard
+            if (typeof initThemeToggle === 'function') {
+                initThemeToggle();
             }
         });
     </script>

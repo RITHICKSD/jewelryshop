@@ -76,12 +76,16 @@ body.auth-active {
     position: absolute;
     top: 30px;
     right: 40px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
     z-index: 20;
     /* Ensure it's above everything */
 }
 
-/* Specific styling for the globe on the auth background to make it visible */
-.auth-header-utils .globe-icon {
+/* Specific styling for the buttons on the auth background to make them visible */
+.auth-header-utils .globe-icon,
+.auth-header-utils .theme-toggle {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
@@ -94,21 +98,32 @@ body.auth-active {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     /* Subtle white glow shadow */
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    position: relative;
+    cursor: pointer;
 }
 
-.auth-header-utils .globe-icon i {
+.auth-header-utils .globe-icon i,
+.auth-header-utils .theme-toggle i {
     color: #ffffff !important;
-    font-size: 1.5rem !important;
+    font-size: 1.3rem !important;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
+    position: absolute;
 }
 
-.auth-header-utils .globe-icon:hover {
+.auth-header-utils .globe-icon:hover,
+.auth-header-utils .theme-toggle:hover {
     background: #c5a059;
     /* Transition to gold on hover */
     border-color: #c5a059;
-    transform: rotate(30deg) scale(1.1);
+    transform: rotate(15deg) scale(1.1);
     box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
+}
+
+.auth-header-utils .globe-icon:hover i,
+.auth-header-utils .theme-toggle:hover i {
+    color: #ffffff !important;
+    text-shadow: none;
 }
 
 .auth-header-utils .globe-icon:hover i {

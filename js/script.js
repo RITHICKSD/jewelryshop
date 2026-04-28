@@ -2,7 +2,8 @@
    Jewelry Store - Interactive Logic
 */
 
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
+    initThemeToggle();
     initRTL();
     initScrollHeader();
     initScrollReveal();
@@ -10,7 +11,42 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounters();
     initCountdown();
     initMarquee();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
+
+// ─── Dark / Light Theme Toggle ───────────────────────────────────────────────
+function initThemeToggle() {
+    const html = document.documentElement;
+    const toggleBtns = document.querySelectorAll('.theme-toggle');
+    if (!toggleBtns.length) return;
+
+    // Restore saved preference (default: light)
+    const saved = localStorage.getItem('lumina-theme');
+    if (saved === 'dark') {
+        html.classList.add('dark-mode');
+        document.body.classList.add('dark-theme');
+    }
+
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isDark = html.classList.toggle('dark-mode');
+            document.body.classList.toggle('dark-theme', isDark);
+            localStorage.setItem('lumina-theme', isDark ? 'dark' : 'light');
+
+            // Micro-animation feedback
+            btn.style.transform = 'scale(0.88) rotate(15deg)';
+            setTimeout(() => { btn.style.transform = ''; }, 200);
+            
+            console.log('Theme toggled. Is dark:', isDark);
+        });
+    });
+}
 
 // RTL / LTR Toggle
 function initRTL() {
@@ -118,8 +154,10 @@ function updateRTLTIcon(direction) {
 // Sticky Header on Scroll
 function initScrollHeader() {
     const header = document.querySelector('header');
+    if (!header) return;
+    
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');

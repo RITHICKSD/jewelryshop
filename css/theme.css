@@ -1,0 +1,601 @@
+/*
+ * theme.css — LUMINA Dark / Light Mode
+ * Applies when <html> has class "dark-mode"
+ * Toggle button styles included.
+ */
+
+/* ════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+   ════════════════════════════════════════════════ */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle i {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: color 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    position: absolute;
+}
+
+/* Sun icon — shown in dark mode */
+.theme-toggle .icon-sun {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.6);
+    color: #f5c842;
+}
+
+/* Moon icon — shown in light mode */
+.theme-toggle .icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    color: var(--text-dark);
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent-gold);
+    background: rgba(197, 160, 89, 0.1);
+    transform: scale(1.08);
+    box-shadow: 0 0 12px rgba(197, 160, 89, 0.25);
+}
+
+/* ════════════════════════════════════════════════
+   DARK MODE — toggle states
+   ════════════════════════════════════════════════ */
+html.dark-mode .theme-toggle .icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+html.dark-mode .theme-toggle .icon-moon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.6);
+}
+
+html.dark-mode .theme-toggle {
+    border-color: rgba(245, 200, 66, 0.4);
+    background: rgba(245, 200, 66, 0.06);
+}
+
+html.dark-mode .theme-toggle:hover {
+    background: rgba(245, 200, 66, 0.15);
+    box-shadow: 0 0 12px rgba(245, 200, 66, 0.3);
+}
+
+/* ════════════════════════════════════════════════
+   DARK MODE — Global Variables Override
+   ════════════════════════════════════════════════ */
+html.dark-mode {
+    --primary-bg: #0f0d0b;
+    --secondary-bg: #1a1510;
+    --text-dark: #f0e8dc;
+    --text-muted: #9e8e7e;
+    --glass-bg: rgba(20, 17, 13, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Body & Base ── */
+html.dark-mode body {
+    background-color: #0f0d0b;
+    color: #f0e8dc;
+}
+
+/* ── Header ── */
+html.dark-mode header {
+    background: rgba(15, 13, 11, 0.9);
+    border-bottom-color: rgba(197, 160, 89, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+html.dark-mode header.scrolled {
+    background: rgba(15, 13, 11, 0.95);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+html.dark-mode .logo {
+    color: #f0e8dc;
+}
+
+html.dark-mode .logo span {
+    background: linear-gradient(90deg, #f0e8dc 0%, #c5a059 50%, #f0e8dc 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+html.dark-mode .nav-link {
+    color: #c8b89a;
+}
+
+html.dark-mode .nav-link:hover,
+html.dark-mode .nav-link.active {
+    color: #c5a059;
+}
+
+html.dark-mode .mobile-menu-toggle .bar {
+    background: #c8b89a;
+}
+
+html.dark-mode .globe-icon i {
+    color: #c8b89a;
+}
+
+html.dark-mode .login-btn {
+    color: #c5a059;
+    border-color: rgba(197, 160, 89, 0.5);
+}
+
+html.dark-mode .login-btn:hover {
+    background: #c5a059;
+    color: #0f0d0b;
+}
+
+/* ── Dropdowns ── */
+html.dark-mode .dropdown-menu {
+    background: #1c1813;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border-top-color: #c5a059;
+}
+
+html.dark-mode .dropdown-menu li a {
+    color: #c8b89a;
+}
+
+html.dark-mode .dropdown-menu li a:hover,
+html.dark-mode .dropdown-menu li a.active {
+    background: #25201a;
+    color: #c5a059;
+}
+
+/* ── Sections & Cards ── */
+html.dark-mode section {
+    background-color: #0f0d0b;
+}
+
+html.dark-mode #collection,
+html.dark-mode #arrivals {
+    background: #0f0d0b;
+    border-color: rgba(197, 160, 89, 0.1);
+}
+
+html.dark-mode #timeline,
+html.dark-mode #bestsellers,
+html.dark-mode #trust {
+    background: #0f0d0b;
+}
+
+html.dark-mode #craft,
+html.dark-mode #gift-finder {
+    background: #13100d;
+}
+
+html.dark-mode #materials,
+html.dark-mode .arrivals-grid div[style] {
+    background: var(--secondary-bg);
+}
+
+html.dark-mode #stats {
+    background: #0f0d0b;
+}
+
+/* ── White section overrides ── */
+html.dark-mode section[style*="background: #fff"],
+html.dark-mode section[style*="background: white"],
+html.dark-mode section[style*="background:#fff"],
+html.dark-mode section[style*="background: white;"] {
+    background: #0f0d0b !important;
+}
+
+html.dark-mode section[style*="background: #fdfbf7"],
+html.dark-mode section[style*="background: #fdfaf5"],
+html.dark-mode section[style*="background: #fafafa"],
+html.dark-mode section[style*="background: #fbf8f3"],
+html.dark-mode section[style*="background: #fdfaf5"] {
+    background: #13100d !important;
+}
+
+/* ── Text & Muted Colors ── */
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3,
+html.dark-mode h4,
+html.dark-mode h5,
+html.dark-mode h6 {
+    color: #f0e8dc;
+}
+
+html.dark-mode p {
+    color: #9e8e7e;
+}
+
+html.dark-mode [style*="color: #888"],
+html.dark-mode [style*="color:#888"],
+html.dark-mode [style*="color: #999"],
+html.dark-mode [style*="color: #aaa"] {
+    color: #7a6d60 !important;
+}
+
+html.dark-mode [style*="color: #222"],
+html.dark-mode [style*="color: #333"],
+html.dark-mode [style*="color: #444"] {
+    color: #c8b89a !important;
+}
+
+html.dark-mode [style*="color: var(--text-muted)"] {
+    color: #7a6d60 !important;
+}
+
+/* ── Card Elements ── */
+html.dark-mode .dropdown-menu li a,
+html.dark-mode [style*="background: white; padding"],
+html.dark-mode [style*="background: white; box"] {
+    background: #1c1813 !important;
+    border-color: rgba(197, 160, 89, 0.1) !important;
+}
+
+html.dark-mode [style*="background: #fdfbf7; padding"],
+html.dark-mode [style*="border: 1px solid #eee"],
+html.dark-mode [style*="border: 1px solid #f5f5f5"] {
+    border-color: rgba(197, 160, 89, 0.12) !important;
+    background: #1c1813 !important;
+}
+
+html.dark-mode .collection-item {
+    border-color: rgba(197, 160, 89, 0.12) !important;
+}
+
+/* ── Footer ── */
+html.dark-mode footer {
+    background-color: #080706 !important;
+    border-top: 1px solid rgba(197, 160, 89, 0.08);
+}
+
+html.dark-mode .footer-brand .logo {
+    color: #f0e8dc !important; /* Override the black color !important; */
+}
+
+/* ── Auth Pages ── */
+html.dark-mode .auth-card {
+    background: #1c1813;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+html.dark-mode .auth-brand .logo {
+    color: #f0e8dc;
+}
+
+html.dark-mode .auth-brand p {
+    color: #7a6d60;
+}
+
+html.dark-mode .auth-form-group label {
+    color: #c8b89a;
+}
+
+html.dark-mode .auth-input {
+    background: #25201a;
+    border-color: #3a3028;
+    color: #f0e8dc;
+}
+
+html.dark-mode .auth-input::placeholder {
+    color: #5a4e44;
+}
+
+html.dark-mode .auth-input:focus {
+    background: #2c2620;
+    border-color: #c5a059;
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+}
+
+html.dark-mode .auth-divider::before {
+    background: #3a3028;
+}
+
+html.dark-mode .auth-divider span {
+    background: #1c1813;
+    color: #5a4e44;
+}
+
+html.dark-mode .social-btn {
+    background: #25201a;
+    border-color: #3a3028;
+    color: #c8b89a;
+}
+
+html.dark-mode .social-btn:hover {
+    background: #2c2620;
+    border-color: #4a3e33;
+}
+
+html.dark-mode .auth-footer {
+    color: #7a6d60;
+}
+
+html.dark-mode .remember-me {
+    color: #7a6d60;
+}
+
+/* ── About / Services / Contact page sections (class-based) ── */
+html.dark-mode .heritage-section,
+html.dark-mode .values-section,
+html.dark-mode .team-section,
+html.dark-mode .craftsmanship-section,
+html.dark-mode .testimonials-section,
+html.dark-mode .cta-section,
+html.dark-mode .luxury-experience,
+html.dark-mode .awards-section,
+html.dark-mode .process-section,
+html.dark-mode .gallery-section,
+html.dark-mode .newsletter-section {
+    background: #0f0d0b !important;
+}
+
+html.dark-mode .about-hero,
+html.dark-mode .services-hero {
+    background: #13100d !important;
+}
+
+html.dark-mode .value-card,
+html.dark-mode .craft-card,
+html.dark-mode .experience-card {
+    background: #1c1813 !important;
+    border-color: rgba(197, 160, 89, 0.1) !important;
+}
+
+html.dark-mode .testimonial {
+    background: #1c1813 !important;
+}
+
+html.dark-mode .team-member,
+html.dark-mode .award-item {
+    background: #1c1813 !important;
+}
+
+html.dark-mode .timeline-content {
+    background: #1c1813 !important;
+    border-color: rgba(197, 160, 89, 0.15) !important;
+}
+
+/* ── Mobile Nav Panel ── */
+html.dark-mode nav {
+    background: #13100d !important;
+    border-color: rgba(197, 160, 89, 0.15) !important;
+}
+
+html.dark-mode .nav-link {
+    color: #c8b89a !important;
+}
+
+html.dark-mode .dropdown-menu li a {
+    color: #9e8e7e !important;
+}
+
+/* ════════════════════════════════════════════════
+   DASHBOARD DARK MODE OVERRIDES
+   ════════════════════════════════════════════════ */
+html.dark-mode {
+    /* User Dashboard */
+    --dash-sidebar-bg: #13100d;
+    --dash-primary-text: #f0e8dc;
+    --dash-muted-text: #9e8e7e;
+    --dash-card-bg: #1c1813;
+    --dash-glass-bg: rgba(28, 24, 19, 0.85);
+    --dash-border: rgba(255, 255, 255, 0.08);
+    --dash-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+
+    /* Admin Dashboard */
+    --admin-sidebar-bg: #0f0d0b;
+    --admin-primary-text: #f0e8dc;
+    --admin-muted-text: #9e8e7e;
+    --admin-card-bg: #1c1813;
+    --admin-glass-bg: rgba(28, 24, 19, 0.85);
+    --admin-border: rgba(255, 255, 255, 0.08);
+    --admin-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+html.dark-mode .dashboard-body,
+html.dark-mode .admin-body,
+html.dark-mode .main-content {
+    background-color: #0c0a09 !important;
+}
+
+html.dark-mode .sidebar {
+    background-color: var(--dash-sidebar-bg) !important;
+    border-color: var(--dash-border) !important;
+}
+
+html.dark-mode .glass-card,
+html.dark-mode .stat-card,
+html.dark-mode .chart-card,
+html.dark-mode .activity-card,
+html.dark-mode .data-table-card {
+    background-color: #171411 !important;
+    border-color: rgba(197, 160, 89, 0.1) !important;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark-mode .dash-header {
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+}
+
+html.dark-mode .stat-value,
+html.dark-mode .large-value,
+html.dark-mode .card-details .value {
+    color: #f0e8dc !important;
+}
+
+html.dark-mode .nav-item a {
+    color: #9e8e7e !important;
+}
+
+html.dark-mode .nav-item.active a {
+    color: var(--accent-gold) !important;
+    background-color: rgba(197, 160, 89, 0.12) !important;
+}
+
+html.dark-mode .nav-item a:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #f0e8dc !important;
+}
+
+html.dark-mode .admin-table th {
+    border-bottom-color: rgba(197, 160, 89, 0.15);
+}
+
+html.dark-mode .admin-table td {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    color: #c8b89a;
+}
+
+.sidebar .sidebar-footer {
+    padding: 20px;
+    margin-top: auto;
+    border-top: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.sidebar .sidebar-toggles {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 25px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.sidebar .theme-toggle {
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(0, 0, 0, 0.03) !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+}
+
+/* Specific for Admin or Dark Mode */
+.admin-body .sidebar .sidebar-footer,
+html.dark-mode .sidebar .sidebar-footer {
+    border-top-color: rgba(197, 160, 89, 0.15);
+}
+
+.admin-body .sidebar .theme-toggle,
+html.dark-mode .sidebar .theme-toggle {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(197, 160, 89, 0.3) !important;
+}
+
+/* Icons for Light Sidebar (Default) */
+.sidebar .theme-toggle .icon-moon,
+.sidebar #langToggle i {
+    color: #2a241e !important;
+    opacity: 1 !important;
+}
+
+/* Icons for Dark Sidebar */
+.admin-body .sidebar .theme-toggle .icon-moon,
+.admin-body .sidebar #adminLangToggle i,
+html.dark-mode .sidebar .theme-toggle .icon-moon,
+html.dark-mode .sidebar .theme-toggle .icon-sun,
+html.dark-mode .sidebar #langToggle i,
+html.dark-mode .sidebar #adminLangToggle i {
+    color: #f0e8dc !important;
+    opacity: 1 !important;
+}
+
+html.dark-mode .sidebar .theme-toggle .icon-sun {
+    color: #f5c842 !important;
+}
+
+.sidebar .theme-toggle i {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    font-size: 1.1rem !important;
+}
+
+.sidebar .theme-toggle:hover {
+    background: rgba(197, 160, 89, 0.12) !important;
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 0 12px rgba(197, 160, 89, 0.2) !important;
+}
+
+.sidebar #langToggle, 
+.sidebar #adminLangToggle {
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    background: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding: 0 !important;
+    flex: none !important;
+}
+
+.admin-body .sidebar #adminLangToggle,
+html.dark-mode .sidebar #langToggle,
+html.dark-mode .sidebar #adminLangToggle {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(197, 160, 89, 0.3) !important;
+}
+
+.sidebar #langToggle:hover, 
+.sidebar #adminLangToggle:hover {
+    background: rgba(197, 160, 89, 0.12) !important;
+    border-color: var(--accent-gold) !important;
+}
+
+/* ════════════════════════════════════════════════
+   SMOOTH TRANSITION FOR ALL ELEMENTS
+   ════════════════════════════════════════════════ */
+body,
+header,
+nav,
+section,
+footer,
+.sidebar,
+.main-content,
+.auth-card,
+.glass-card,
+.stat-card,
+.chart-card,
+.activity-card,
+.data-table-card,
+.dash-header,
+.auth-input,
+.social-btn,
+.value-card,
+.craft-card,
+.experience-card,
+.testimonial,
+.team-member,
+.award-item,
+.timeline-content,
+.dropdown-menu,
+.login-btn,
+h1, h2, h3, h4, h5, h6, p, span, a, i, button {
+    transition-property: background-color, color, border-color, box-shadow, transform;
+    transition-duration: 0.35s;
+    transition-timing-function: ease;
+}
