@@ -25,6 +25,40 @@
     overflow: hidden;
 }
 
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-dark, #1a1510);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: var(--font-sans, sans-serif);
+}
+
+html.dark-mode .lang-toggle {
+    color: #f0e8dc;
+    border-color: rgba(197, 160, 89, 0.4);
+}
+
+.lang-toggle:hover {
+    border-color: var(--accent-gold);
+    background: rgba(197, 160, 89, 0.1);
+    transform: scale(1.08);
+    box-shadow: 0 0 12px rgba(197, 160, 89, 0.25);
+}
+
 .theme-toggle i {
     font-size: 0.95rem;
     color: var(--text-dark);
@@ -72,6 +106,17 @@ html.dark-mode .theme-toggle {
 }
 
 html.dark-mode .theme-toggle:hover {
+    background: rgba(245, 200, 66, 0.15);
+    box-shadow: 0 0 12px rgba(245, 200, 66, 0.3);
+}
+
+html.dark-mode .lang-toggle {
+    border-color: rgba(245, 200, 66, 0.4);
+    background: rgba(245, 200, 66, 0.06);
+    color: #f0e8dc;
+}
+
+html.dark-mode .lang-toggle:hover {
     background: rgba(245, 200, 66, 0.15);
     box-shadow: 0 0 12px rgba(245, 200, 66, 0.3);
 }
@@ -503,19 +548,15 @@ html.dark-mode .sidebar .theme-toggle {
 }
 
 /* Icons for Light Sidebar (Default) */
-.sidebar .theme-toggle .icon-moon,
-.sidebar #langToggle i {
+.sidebar .theme-toggle .icon-moon {
     color: #2a241e !important;
     opacity: 1 !important;
 }
 
 /* Icons for Dark Sidebar */
 .admin-body .sidebar .theme-toggle .icon-moon,
-.admin-body .sidebar #adminLangToggle i,
 html.dark-mode .sidebar .theme-toggle .icon-moon,
-html.dark-mode .sidebar .theme-toggle .icon-sun,
-html.dark-mode .sidebar #langToggle i,
-html.dark-mode .sidebar #adminLangToggle i {
+html.dark-mode .sidebar .theme-toggle .icon-sun {
     color: #f0e8dc !important;
     opacity: 1 !important;
 }
@@ -539,8 +580,7 @@ html.dark-mode .sidebar .theme-toggle .icon-sun {
     box-shadow: 0 0 12px rgba(197, 160, 89, 0.2) !important;
 }
 
-.sidebar #langToggle, 
-.sidebar #adminLangToggle {
+.sidebar .lang-toggle {
     width: 44px !important;
     height: 44px !important;
     display: flex !important;
@@ -551,19 +591,27 @@ html.dark-mode .sidebar .theme-toggle .icon-sun {
     border: 1px solid rgba(0, 0, 0, 0.1) !important;
     padding: 0 !important;
     flex: none !important;
+    font-size: 0.75rem !important;
+    color: #2a241e !important;
 }
 
-.admin-body .sidebar #adminLangToggle,
-html.dark-mode .sidebar #langToggle,
-html.dark-mode .sidebar #adminLangToggle {
+.admin-body .sidebar .lang-toggle,
+html.dark-mode .sidebar .lang-toggle {
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(197, 160, 89, 0.3) !important;
+    color: #f0e8dc !important;
 }
 
-.sidebar #langToggle:hover, 
-.sidebar #adminLangToggle:hover {
+.sidebar .lang-toggle:hover {
     background: rgba(197, 160, 89, 0.12) !important;
     border-color: var(--accent-gold) !important;
+}
+
+/* Adjusting sidebar lang toggle for the new text-based style */
+.sidebar .lang-toggle {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 0.75rem !important;
 }
 
 /* ════════════════════════════════════════════════

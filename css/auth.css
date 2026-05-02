@@ -84,7 +84,7 @@ body.auth-active {
 }
 
 /* Specific styling for the buttons on the auth background to make them visible */
-.auth-header-utils .globe-icon,
+.auth-header-utils .lang-toggle,
 .auth-header-utils .theme-toggle {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -100,9 +100,9 @@ body.auth-active {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     position: relative;
     cursor: pointer;
+    color: #ffffff !important; /* Ensure LTR/RTL text is white */
 }
 
-.auth-header-utils .globe-icon i,
 .auth-header-utils .theme-toggle i {
     color: #ffffff !important;
     font-size: 1.3rem !important;
@@ -111,25 +111,16 @@ body.auth-active {
     position: absolute;
 }
 
-.auth-header-utils .globe-icon:hover,
+.auth-header-utils .lang-toggle:hover,
 .auth-header-utils .theme-toggle:hover {
     background: #c5a059;
     /* Transition to gold on hover */
     border-color: #c5a059;
     transform: rotate(15deg) scale(1.1);
     box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
+    color: #ffffff !important;
 }
 
-.auth-header-utils .globe-icon:hover i,
-.auth-header-utils .theme-toggle:hover i {
-    color: #ffffff !important;
-    text-shadow: none;
-}
-
-.auth-header-utils .globe-icon:hover i {
-    color: #ffffff !important;
-    text-shadow: none;
-}
 
 [dir="rtl"] .auth-header-utils {
     right: auto;
@@ -432,13 +423,15 @@ body.auth-active {
         right: 20px;
     }
 
-    /* Brown/Gold globe for mobile visibility */
-    .auth-header-utils .globe-icon {
+    /* Brown/Gold toggle for mobile visibility */
+    .auth-header-utils .lang-toggle,
+    .auth-header-utils .theme-toggle {
         background: rgba(197, 160, 89, 0.1);
         border-color: rgba(197, 160, 89, 0.2);
     }
 
-    .auth-header-utils .globe-icon i {
+    .auth-header-utils .lang-toggle,
+    .auth-header-utils .theme-toggle i {
         color: #c5a059 !important;
         text-shadow: none;
     }

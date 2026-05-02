@@ -50,36 +50,25 @@ function initThemeToggle() {
 
 // RTL / LTR Toggle
 function initRTL() {
-    const toggles = document.querySelectorAll('.globe-icon');
+    const toggles = document.querySelectorAll('.lang-toggle');
     const html = document.documentElement;
 
-    console.log('initRTL called');
-    console.log('Toggle elements found:', toggles.length);
-
-    // Always start in LTR mode on page load
-    html.setAttribute('dir', 'ltr');
+    // Restore saved preference (default: ltr)
+    const savedDir = localStorage.getItem('site-dir') || 'ltr';
+    html.setAttribute('dir', savedDir);
+    updateLangToggle(savedDir);
 
     if (toggles.length > 0) {
-        console.log('Attaching RTL toggle events to', toggles.length, 'elements');
-
-        // Add event listeners to all globe icons
         toggles.forEach((toggle) => {
-            console.log('Adding click listener to:', toggle);
-            
-            // Add both click and touch events for mobile compatibility
             const handleToggle = (e) => {
-                console.log('Globe clicked! Event triggered:', e.type);
                 e.preventDefault();
                 e.stopPropagation();
 
                 const currentDir = html.getAttribute('dir');
                 const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
-                console.log('Switching from', currentDir, 'to', newDir);
 
                 // Update direction
                 html.setAttribute('dir', newDir);
-                console.log('HTML dir attribute set to:', newDir);
-                
                 localStorage.setItem('site-dir', newDir);
 
                 // Add visual feedback
@@ -88,67 +77,47 @@ function initRTL() {
                     toggle.style.transform = 'scale(1)';
                 }, 150);
 
-                // Update all icons to show current state
-                updateRTLTIcon(newDir);
+                // Update all toggles to show current state
+                updateLangToggle(newDir);
 
-                // Re-run visibility check
+                // Re-run visibility check if needed
                 initScrollReveal();
 
                 // Trigger custom event for other components
                 window.dispatchEvent(new CustomEvent('directionChange', { 
                     detail: { direction: newDir } 
                 }));
-
-                console.log('RTL/LTR toggle completed. Current direction:', newDir);
             };
             
-            // Add click event for desktop
             toggle.addEventListener('click', handleToggle);
-            
-            // Add only touchend event for mobile (to prevent double triggers)
-            toggle.addEventListener('touchend', handleToggle, { passive: false });
-            
-            console.log('Added click and touchend events to globe');
+            toggle.addEventListener('touchend', (e) => {
+                if (e.cancelable) e.preventDefault();
+                handleToggle(e);
+            }, { passive: false });
         });
-
-        console.log('RTL toggle events attached');
-
-        // Initialize all icons
-        updateRTLTIcon('ltr');
-    } else {
-        console.error('No RTL toggle elements found!');
     }
 }
 
-// Update RTL toggle icon based on current direction
-function updateRTLTIcon(direction) {
-    const toggles = document.querySelectorAll('.globe-icon');
-    console.log('Updating', toggles.length, 'globe icons to direction:', direction);
+// Update RTL toggle text based on current direction
+function updateLangToggle(direction) {
+    const toggles = document.querySelectorAll('.lang-toggle');
     
     toggles.forEach((toggle) => {
-        const icon = toggle.querySelector('i');
-        if (icon) {
-            // Always show globe icon, but change color for visual feedback
-            icon.className = 'fas fa-globe';
-            if (direction === 'rtl') {
-                toggle.title = 'Switch to LTR';
-                toggle.style.color = '#c5a059'; // Gold color for RTL
-                console.log('Set RTL styling for globe');
-            } else {
-                toggle.title = 'Switch to RTL';
-                toggle.style.color = 'var(--text-dark)'; // Normal color for LTR
-                console.log('Set LTR styling for globe');
-            }
+        // Update text: show current direction or target direction?
+        // Usually, it's better to show the CURRENT state as text, or what it WILL BE.
+        // The user said "the circle inside the LTR text... if I click that means it need to change as RTL position and show as a text RTL".
+        // This implies the text should be the CURRENT direction.
+        
+        toggle.innerText = direction.toUpperCase();
+        
+        if (direction === 'rtl') {
+            toggle.title = 'Switch to LTR';
+            toggle.style.borderColor = 'var(--accent-gold)';
+        } else {
+            toggle.title = 'Switch to RTL';
+            toggle.style.borderColor = '';
         }
     });
-    
-    // Test if CSS is being applied
-    const header = document.querySelector('header');
-    if (header) {
-        const computedStyle = window.getComputedStyle(header);
-        console.log('Header computed style direction:', computedStyle.direction);
-        console.log('HTML dir attribute:', document.documentElement.getAttribute('dir'));
-    }
 }
 
 // Sticky Header on Scroll

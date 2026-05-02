@@ -67,9 +67,7 @@
         </nav>
         <div class="sidebar-footer">
             <div class="sidebar-toggles">
-                <a href="#" id="langToggle" title="Toggle RTL/LTR">
-                    <i class="fas fa-globe"></i>
-                </a>
+                <button class="lang-toggle" title="Toggle RTL/LTR">LTR</button>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
                     <i class="fas fa-moon icon-moon"></i>
                     <i class="fas fa-sun icon-sun"></i>
@@ -583,17 +581,6 @@
 
 
 
-        // Language Toggle
-        const langToggle = document.getElementById('langToggle');
-        if (langToggle) {
-            langToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const currentDir = document.documentElement.getAttribute('dir');
-                const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
-                document.documentElement.setAttribute('dir', newDir);
-                document.documentElement.lang = newDir === 'rtl' ? 'ar' : 'en';
-            });
-        
         // Initialize theme toggle for dashboard
         if (typeof initThemeToggle === 'function') {
             initThemeToggle();
