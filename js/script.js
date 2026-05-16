@@ -5,6 +5,7 @@
 function init() {
     initThemeToggle();
     initRTL();
+    initAccordion();
     initScrollHeader();
     initScrollReveal();
     initMobileMenu();
@@ -50,10 +51,8 @@ function initThemeToggle() {
 
 // RTL / LTR Toggle
 function initRTL() {
-    const toggles = document.querySelectorAll('.lang-toggle');
     const html = document.documentElement;
-
-    // Restore saved preference (default: ltr)
+    const toggles = document.querySelectorAll('.lang-toggle');
     const savedDir = localStorage.getItem('site-dir') || 'ltr';
     html.setAttribute('dir', savedDir);
     updateLangToggle(savedDir);
@@ -96,6 +95,37 @@ function initRTL() {
             }, { passive: false });
         });
     }
+}
+
+// Accordion Logic for FAQ
+function initAccordion() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all other items
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                otherItem.classList.remove('active');
+                const otherIcon = otherItem.querySelector('.accordion-header i');
+                if (otherIcon) {
+                    otherIcon.classList.remove('fa-minus');
+                    otherIcon.classList.add('fa-plus');
+                }
+            });
+
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+                const icon = header.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                }
+            }
+        });
+    });
 }
 
 // Update RTL toggle text based on current direction

@@ -16,15 +16,7 @@
 }
 
 .section-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #c5a059, #008080);
-    border-radius: 2px;
+    display: none; /* Removed unnecessary underlines */
 }
 
 .section-header p {
@@ -183,18 +175,7 @@
 }
 
 .title-word.highlight::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #c5a059, #008080);
-    border-radius: 2px;
-    animation: underlineGrow 1s ease forwards;
-    animation-delay: 1s;
-    transform: scaleX(0);
-    transform-origin: left;
+    display: none; /* Removed unnecessary underlines */
 }
 
 @keyframes underlineGrow {
@@ -1241,32 +1222,162 @@
 }
 
 /* Animation Support */
-[data-aos] {
-    opacity: 0;
-    transition: opacity 0.6s ease, transform 0.6s ease;
+/* Heritage V2 Styles */
+.heritage-section {
+    padding: 120px 0;
+    background: var(--primary-bg);
 }
 
-[data-aos].aos-animate {
-    opacity: 1;
+.heritage-timeline-v2 {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 40px 0;
 }
 
-/* RTL Support */
-[dir="rtl"] .experience-card:hover {
-    transform: translateY(-10px) translateX(-10px);
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
+    transform: translateX(-50%);
 }
 
-[dir="rtl"] .award-item:hover {
-    transform: translateX(-10px);
+.timeline-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+    position: relative;
 }
 
-[dir="rtl"] .newsletter-form-wrapper {
+.timeline-block:nth-child(even) {
     flex-direction: row-reverse;
 }
 
-[dir="rtl"] .process-step {
-    flex-direction: row-reverse;
+.timeline-year-box {
+    width: 120px;
+    height: 120px;
+    background: var(--secondary-bg);
+    border: 2px solid var(--accent-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-[dir="rtl"] .award-item {
-    flex-direction: row-reverse;
+.timeline-info {
+    width: 40%;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    margin: 0 50px;
+    position: relative;
+}
+
+html.dark-mode .timeline-info {
+    background: var(--dash-card-bg);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.timeline-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+    margin-bottom: 15px;
+}
+
+.timeline-info p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* Sustainability Section */
+.sustainability-section {
+    padding: 120px 0;
+    background: #fdfaf5;
+}
+
+html.dark-mode .sustainability-section {
+    background: var(--primary-bg);
+}
+
+.sustainability-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.sus-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+.sus-item {
+    margin-bottom: 40px;
+}
+
+.sus-item h4 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+    margin-bottom: 15px;
+}
+
+.sus-item p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* Meet Our Masters Fix */
+.member-image {
+    aspect-ratio: 1 / 1.2;
+    overflow: hidden;
+    height: auto; /* Allow aspect ratio to control height */
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* Ensure faces aren't cropped poorly */
+}
+
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 30px;
+    }
+    .timeline-block {
+        flex-direction: column !important;
+        align-items: flex-start;
+        padding-left: 60px;
+    }
+    .timeline-year-box {
+        width: 80px;
+        height: 80px;
+        font-size: 1.1rem;
+        position: absolute;
+        left: -10px;
+        top: 0;
+    }
+    .timeline-info {
+        width: 100%;
+        margin: 20px 0 0 0;
+    }
+    .sustainability-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 }

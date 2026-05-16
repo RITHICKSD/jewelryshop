@@ -26,6 +26,12 @@
     animation: slideRight 0.9s ease both;
 }
 
+/* Cinematic Reveal Up */
+.reveal-up {
+    opacity: 0;
+    animation: heroFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 /* Stagger delays using --order CSS custom property */
 .reveal,
 .reveal-left,

@@ -125,12 +125,12 @@ html.dark-mode .lang-toggle:hover {
    DARK MODE — Global Variables Override
    ════════════════════════════════════════════════ */
 html.dark-mode {
-    --primary-bg: #0f0d0b;
-    --secondary-bg: #1a1510;
-    --text-dark: #f0e8dc;
-    --text-muted: #9e8e7e;
-    --glass-bg: rgba(20, 17, 13, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.06);
+    --primary-bg: #0d0b09; /* Slightly deeper dark */
+    --secondary-bg: #15120f;
+    --text-dark: #f2ede4; /* Brighter ivory for text */
+    --text-muted: #8a7a6e;
+    --glass-bg: rgba(13, 11, 9, 0.9);
+    --glass-border: rgba(197, 160, 89, 0.1);
 }
 
 /* ── Body & Base ── */
@@ -436,22 +436,22 @@ html.dark-mode .dropdown-menu li a {
    ════════════════════════════════════════════════ */
 html.dark-mode {
     /* User Dashboard */
-    --dash-sidebar-bg: #13100d;
-    --dash-primary-text: #f0e8dc;
-    --dash-muted-text: #9e8e7e;
-    --dash-card-bg: #1c1813;
-    --dash-glass-bg: rgba(28, 24, 19, 0.85);
-    --dash-border: rgba(255, 255, 255, 0.08);
-    --dash-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    --dash-sidebar-bg: #0d0b09;
+    --dash-primary-text: #f2ede4;
+    --dash-muted-text: #8a7a6e;
+    --dash-card-bg: #15120f;
+    --dash-glass-bg: rgba(21, 18, 15, 0.9);
+    --dash-border: rgba(197, 160, 89, 0.1);
+    --dash-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
 
     /* Admin Dashboard */
-    --admin-sidebar-bg: #0f0d0b;
-    --admin-primary-text: #f0e8dc;
-    --admin-muted-text: #9e8e7e;
-    --admin-card-bg: #1c1813;
-    --admin-glass-bg: rgba(28, 24, 19, 0.85);
-    --admin-border: rgba(255, 255, 255, 0.08);
-    --admin-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    --admin-sidebar-bg: #0d0b09;
+    --admin-primary-text: #f2ede4;
+    --admin-muted-text: #8a7a6e;
+    --admin-card-bg: #15120f;
+    --admin-glass-bg: rgba(21, 18, 15, 0.9);
+    --admin-border: rgba(197, 160, 89, 0.1);
+    --admin-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
 }
 
 html.dark-mode .dashboard-body,

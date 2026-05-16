@@ -156,23 +156,33 @@ body.auth-active {
 /* Logo & Branding */
 .auth-brand {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
 }
 
 .auth-brand .logo {
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 2.2rem;
-    color: #1a1510;
-    margin-bottom: 12px;
+    margin: 0;
 }
 
-.auth-brand p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    color: #888;
+.auth-title {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
     font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.auth-subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 400;
 }
 
 /* ════════════════════════════════════════════════════
@@ -258,14 +268,18 @@ body.auth-active {
     border: none;
     color: white;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    border-radius: 2px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .auth-btn-submit:hover {
@@ -339,6 +353,14 @@ body.auth-active {
 
 .google-icon {
     color: #ea4335;
+}
+
+.apple-icon {
+    color: #000;
+}
+
+html.dark-mode .apple-icon {
+    color: #fff;
 }
 
 .fb-icon {

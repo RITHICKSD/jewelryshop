@@ -81,22 +81,15 @@
     <main>
         <!-- Section 1: Hero Banner -->
         <section class="contact-hero">
-            <div class="hero-background">
-                <div class="floating-gems">
-                    <div class="gem gem-1">💎</div>
-                    <div class="gem gem-2">💍</div>
-                    <div class="gem gem-3">👑</div>
-                    <div class="gem gem-4">⭐</div>
-                </div>
-            </div>
+            <div class="hero-background"></div>
             <div class="container">
-                <div class="hero-layout">
-                    <div class="hero-content">
-                        <h1 class="accent-font fade-in-up">Get in Touch</h1>
-                        <h2 class="slide-in-left">We're Here to Help You Shine</h2>
-                        <p class="fade-in-up">Whether you're ready to create your dream piece or have questions about
+                <div class="hero-layout-centered">
+                    <div class="hero-content text-center">
+                        <span class="accent-font reveal-up">Get in Touch</span>
+                        <h1 class="reveal-up">We're Here to Help You Shine</h1>
+                        <p class="reveal-up">Whether you're ready to create your dream piece or have questions about
                             our collections, our expert team is here to assist you every step of the way.</p>
-                        <div class="contact-info fade-in-up">
+                        <div class="contact-info-row reveal-up">
                             <div class="info-item">
                                 <i class="fas fa-phone"></i>
                                 <span>+1 (555) 123-4567</span>
@@ -106,9 +99,6 @@
                                 <span>info@luminajewelry.com</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="hero-image fade-in-right">
-                        <img src="assets/co.jpg" alt="LUMINA Jewelry Contact">
                     </div>
                 </div>
             </div>
@@ -302,21 +292,52 @@
         </section>
 
         <!-- Section 5: FAQ Section -->
-        <section class="contact-faq" style="padding: 100px 0; background: #fff;">
+        <section class="contact-faq-section">
             <div class="container">
-                <h2 class="section-title text-center">Frequently Asked Questions</h2>
-                <div style="max-width: 800px; margin: 40px auto;">
-                    <div style="margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
-                        <h4 style="margin-bottom: 10px;">How long does a custom design take?</h4>
-                        <p style="color: #666;">Typically, the process takes 4-6 weeks from the initial consultation to final delivery, depending on the complexity of the design.</p>
+                <div class="section-header text-center">
+                    <span class="accent-font">Common Inquiries</span>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How long does a custom design take?</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Typically, the process takes 4-6 weeks from the initial consultation to final delivery, depending on the complexity of the design and stone sourcing.</p>
+                        </div>
                     </div>
-                    <div style="margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
-                        <h4 style="margin-bottom: 10px;">Do you offer international shipping?</h4>
-                        <p style="color: #666;">Yes, we offer fully insured international shipping to most countries worldwide via our premium logistics partners.</p>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>Do you offer international shipping?</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Yes, we offer fully insured international shipping to most countries worldwide via our premium logistics partners like Ferrari Group and Malca-Amit.</p>
+                        </div>
                     </div>
-                    <div style="margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
-                        <h4 style="margin-bottom: 10px;">What is your return policy?</h4>
-                        <p style="color: #666;">We offer a 30-day return policy for all ready-to-wear collections. Custom pieces are non-refundable but include a lifetime craftsmanship guarantee.</p>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>What is your return policy?</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>We offer a 30-day return policy for all ready-to-wear collections in original condition. Custom pieces are non-refundable but include a lifetime craftsmanship guarantee.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>Are your diamonds conflict-free?</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Absolutely. Every diamond in our collection is sourced through the Kimberley Process, ensuring they are 100% conflict-free and ethically mined.</p>
+                        </div>
                     </div>
                 </div>
             </div>
